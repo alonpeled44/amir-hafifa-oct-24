@@ -1,0 +1,25 @@
+.header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background-color: #4062ab;
+  padding: 10px;
+
+  & img {
+    width: 60px;
+  }
+
+  & h1 {
+    font-size: 50px;
+    color: #ffcd0d;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+  }
+
+  & p {
+    margin-left: auto;
+    margin-right: 15px;
+    font-size: 50px;
+    color: #ffcd0d;
+  }
+}

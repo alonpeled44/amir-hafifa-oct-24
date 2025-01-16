@@ -1,5 +1,11 @@
+@font-face {
+  font-family: pokemon-font;
+  src: url(../pokemon-font.otf);
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: pokemon-font;
 }
