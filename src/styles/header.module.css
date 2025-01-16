@@ -1,8 +1,8 @@
 .header {
   display: flex;
   align-items: center;
-  background-color: #4062ab;
   gap: 15px;
+  background-color: #4062ab;
   padding: 10px;
 
   & img {
