@@ -1,0 +1,87 @@
+/* Login container */
+.container {
+  background-color: #4062ab;
+  border-radius: 15px;
+  padding: 20px 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 100%;
+  max-width: 600px;
+  max-height: 450px;
+  border: 2px solid black;
+  text-align: center;
+  margin: 0 auto;
+  position: absolute;
+}
+
+/* Title styling */
+.container h1 {
+  font-family: pokemon-font;
+  font-size: 36px;
+  color: #ffd700;
+  margin-bottom: 20px;
+}
+
+/* Input fields */
+.container input {
+  display: block;
+  width: calc(100% - 40px);
+  padding: 10px;
+  margin: 10px auto;
+  font-size: 24px;
+  border: 2px solid black;
+  border-radius: 8px;
+  font-family: pokemon-font;
+  background-color: #e3e2e3;
+  color: black;
+  height: 55px;
+}
+
+.container input:focus {
+  outline: none;
+  background-color: #fad503;
+}
+
+.container input::placeholder {
+  color: #636262;
+}
+
+/* Error message styling */
+.container p {
+  height: 20px;
+  color: red;
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+/* Button container */
+.container > div {
+  display: flex;
+  justify-content: space-between;
+  justify-self: center;
+  width: 500px;
+}
+
+/* Buttons */
+.container button {
+  flex: 1;
+  margin: 5px;
+  padding: 10px;
+  font-size: 20px;
+  font-family: pokemon-font;
+  color: black;
+  background-color: #ffd700;
+  border: 2px solid black;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  height: 55px;
+}
+
+.container button:hover {
+  background-color: #2e4a84;
+}
+
+.container button:active {
+  transform: translateY(3px);
+}

@@ -4,6 +4,7 @@
   gap: 15px;
   background-color: #4062ab;
   padding: 10px;
+  height: 80px;
 
   & img {
     width: 60px;
