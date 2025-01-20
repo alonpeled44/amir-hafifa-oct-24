@@ -1,5 +1,4 @@
-/* Login container */
-.container {
+form.container {
   background-color: #4062ab;
   border-radius: 15px;
   padding: 20px 30px;
@@ -7,25 +6,24 @@
   width: 100%;
   height: 100%;
   max-width: 600px;
-  max-height: 450px;
+  max-height: 375px;
   border: 2px solid black;
   text-align: center;
   margin: 0 auto;
   position: absolute;
 }
 
-/* Title styling */
-.container h1 {
+form.container h1 {
   font-family: pokemon-font;
-  font-size: 36px;
+  font-size: 40px;
   color: #ffd700;
   margin-bottom: 20px;
 }
 
-/* Input fields */
-.container input {
+form.container input {
   display: block;
-  width: calc(100% - 40px);
+  width: 90%;
+  max-width: 500px;
   padding: 10px;
   margin: 10px auto;
   font-size: 24px;
@@ -37,37 +35,42 @@
   height: 55px;
 }
 
-.container input:focus {
+form.container input:focus {
   outline: none;
   background-color: #fad503;
 }
 
-.container input::placeholder {
-  color: #636262;
+form.container input::placeholder {
+  color: #4f4f4f;
 }
 
-/* Error message styling */
-.container p {
-  height: 20px;
-  color: red;
-  font-size: 14px;
-  margin: 10px 0;
+form.container p {
+  height: 30px;
+  background: linear-gradient(to right, #eb0f07, #ec3d3a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 22px;
+  margin: 20px 0 10px 0;
+  padding-left: 30px;
+  justify-self: flex-start;
 }
 
-/* Button container */
-.container > div {
+form.container > div {
   display: flex;
   justify-content: space-between;
   justify-self: center;
+  position: relative;
+  top: 18px;
   width: 500px;
 }
 
 /* Buttons */
-.container button {
+form.container button {
   flex: 1;
   margin: 5px;
   padding: 10px;
-  font-size: 20px;
+  font-size: 24px;
   font-family: pokemon-font;
   color: black;
   background-color: #ffd700;
@@ -78,10 +81,71 @@
   height: 55px;
 }
 
-.container button:hover {
+form.container button:hover {
   background-color: #2e4a84;
 }
 
-.container button:active {
+form.container button:active {
   transform: translateY(3px);
+}
+
+@media (max-width: 1200px) {
+  form.container {
+    background-color: transparent;
+    max-width: 400px;
+    max-height: 375px;
+    border: none;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 150px;
+  }
+
+  form.container h1 {
+    display: none;
+  }
+
+  form.container input {
+    border: none;
+    border-bottom: 2px solid black;
+    font-size: 12px;
+    padding: 5px 0px;
+    background-color: transparent;
+    font-size: 30px;
+    border-radius: 0;
+  }
+
+  form.container input:focus {
+    outline: none;
+    color: black;
+    background-color: transparent;
+  }
+
+  form.container input::placeholder {
+    color: #ffd700;
+    -webkit-text-stroke: 2px #4062ab;
+    font-size: 30px;
+  }
+
+  form.container p {
+    align-self: flex-start;
+    padding-left: 20px;
+    font-size: 25px;
+    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.712);
+  }
+
+  form.container > div {
+    flex-direction: column;
+    width: fit-content;
+    align-items: center;
+  }
+
+  form.container > div > :first-child {
+    width: 100px;
+  }
+
+  form.container > div > :last-child {
+    width: 180px;
+  }
 }

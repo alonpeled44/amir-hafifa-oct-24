@@ -11,22 +11,32 @@
 }
 
 main {
-  height: calc(100vh - 80px);
+  height: 100vh; /* Ensures full viewport height */
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   overflow: hidden;
+}
 
-  & > img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    filter: blur(3px);
-    transform: scale(1.05);
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+main .img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100vw; /* Ensures full viewport width */
+  height: 100vh; /* Ensures full viewport height */
+  background-size: cover; /* Ensures the image covers the entire container */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat;
+  filter: blur(3px);
+  transform: scale(1.05); /* Adds slight scaling to cover potential gaps */
+  background-image: url("../images/pokemon-backgroud.jpg");
+}
+
+/* Media query for mobile devices */
+@media (max-width: 1200px) {
+  main .img {
+    background-image: url("../images/background-image-phone.png");
   }
 }

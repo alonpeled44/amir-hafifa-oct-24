@@ -24,3 +24,31 @@
     color: #ffcd0d;
   }
 }
+
+/* Media query for mobile devices */
+@media (max-width: 1200px) {
+  .header {
+    background-color: transparent;
+    position: absolute;
+    z-index: 1;
+    left: 0px;
+    right: 0px;
+    top: 20px;
+    margin-inline: auto;
+    width: fit-content;
+    gap: 2px;
+  }
+
+  .header h1 {
+    -webkit-text-stroke: 4px #4062ab; /* width and color */
+    font-size: 65px;
+  }
+
+  .header p {
+    display: none;
+  }
+
+  .header img {
+    width: 67px;
+  }
+}
