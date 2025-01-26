@@ -11,7 +11,7 @@
 }
 
 main {
-  height: 100vh; /* Ensures full viewport height */
+  height: calc(100vh - 80px); /* Ensures full viewport height */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,6 +36,10 @@ main .img {
 
 /* Media query for mobile devices */
 @media (max-width: 1200px) {
+  main {
+    height: 100vh;
+  }
+
   main .img {
     background-image: url("../images/background-image-phone.png");
   }
