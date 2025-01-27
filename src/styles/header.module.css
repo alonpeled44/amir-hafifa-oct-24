@@ -46,5 +46,9 @@
       -webkit-text-stroke: 4px #4062ab; /* width and color */
       font-size: 65px;
     }
+
+    & p {
+      display: none;
+    }
   }
 }
