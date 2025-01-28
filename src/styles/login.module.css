@@ -1,0 +1,118 @@
+.container {
+  background-color: #4062ab;
+  border-radius: 15px;
+  padding: 20px 30px;
+  box-shadow: 5px 7px rgba(0, 0, 0, 0.2);
+  width: min(600px, 100%);
+  height: min(375px, 100%);
+  border: 2px solid black;
+  text-align: center;
+  left: 50%;
+  transform: translate(-50%);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+
+  & h1 {
+    font-size: 40px;
+    color: #ffd700;
+    margin-bottom: 10px;
+  }
+
+  & input {
+    width: min(500px, 90%);
+    padding: 10px;
+    font-size: 24px;
+    border: 2px solid black;
+    border-radius: 8px;
+    background-color: #e3e2e3;
+    height: 55px;
+  }
+
+  & input:focus {
+    outline: none;
+    background-color: #fad503;
+  }
+
+  & input::placeholder {
+    color: #4f4f4f;
+  }
+
+  & > div {
+    display: flex;
+    justify-content: space-between;
+    justify-self: center;
+    width: 500px;
+    padding: 23px 5px 5px 5px;
+    gap: 10px;
+  }
+
+  & button {
+    height: 55px;
+    flex: 1;
+    font-size: 24px;
+    padding: 10px;
+    background-color: #ffd700;
+    border: 2px solid black;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  & button:hover {
+    background-color: #2e4a84;
+  }
+
+  & button:active {
+    transform: translateY(3px);
+  }
+}
+
+@media (max-width: 1200px) {
+  .container {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    top: 110px;
+
+    & input {
+      border: none;
+      border-bottom: 2px solid black;
+      border-radius: 0px;
+      font-size: 12px;
+      padding: 5px 0px;
+      background-color: transparent;
+      font-size: 30px;
+      text-shadow: 1.5px 2px 5px bisque;
+    }
+
+    & input:focus {
+      outline: none;
+      background-color: transparent;
+    }
+
+    & input::placeholder {
+      color: #ffd700;
+      -webkit-text-stroke: 2px #4062ab;
+      font-size: 30px;
+      text-shadow: none;
+    }
+
+    & > div {
+      flex-direction: column;
+      width: fit-content;
+      align-items: center;
+      top: 60px;
+    }
+
+    & > div > :first-child {
+      width: 100px;
+    }
+
+    & > div > :last-child {
+      width: 180px;
+    }
+  }
+}

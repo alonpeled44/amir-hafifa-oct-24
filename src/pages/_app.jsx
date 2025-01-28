@@ -5,7 +5,12 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <Header />
-      <Component {...pageProps} />
+      <main>
+        <div className="img-container">
+          <div className="background-img" />
+        </div>
+        <Component {...pageProps} />
+      </main>
     </>
   );
 }
