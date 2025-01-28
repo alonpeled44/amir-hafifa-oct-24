@@ -31,11 +31,10 @@
     background-color: transparent;
     position: absolute;
     left: 50%;
+    top: 20px;
     transform: translate(-50%);
     z-index: 1;
-    top: 20px;
     margin-inline: auto;
-    width: fit-content;
     gap: 2px;
 
     & img {

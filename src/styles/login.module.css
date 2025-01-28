@@ -43,7 +43,7 @@
     display: flex;
     justify-content: space-between;
     justify-self: center;
-    width: 500px;
+    width: 93.2835821%; /* exact percentege to reach 500px */
     padding: 23px 5px 5px 5px;
     gap: 10px;
   }
@@ -80,7 +80,7 @@
     top: 110px;
 
     & input {
-      border: none;
+      border: 0;
       border-bottom: 2px solid black;
       border-radius: 0;
       font-size: 12px;
