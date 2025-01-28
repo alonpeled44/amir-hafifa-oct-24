@@ -79,10 +79,6 @@
     align-items: center;
     top: 110px;
 
-    & h1 {
-      display: none;
-    }
-
     & input {
       border: none;
       border-bottom: 2px solid black;

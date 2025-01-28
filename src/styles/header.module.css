@@ -30,9 +30,9 @@
   .header {
     background-color: transparent;
     position: absolute;
+    left: 50%;
+    transform: translate(-50%);
     z-index: 1;
-    left: 0px;
-    right: 0px;
     top: 20px;
     margin-inline: auto;
     width: fit-content;
@@ -43,12 +43,8 @@
     }
 
     & h1 {
-      -webkit-text-stroke: 4px #4062ab; /* width and color */
+      -webkit-text-stroke: 4px #4062ab;
       font-size: 65px;
-    }
-
-    & p {
-      display: none;
     }
   }
 }
