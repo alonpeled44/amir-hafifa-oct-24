@@ -5,8 +5,8 @@
 
 * {
   box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+  padding: 0px;
+  margin: 0px;
   font-family: pokemon-font;
 }
 
@@ -19,12 +19,12 @@ main {
   position: relative;
 
   & .img-container {
-    overflow: hidden;
-    position: absolute;
     width: 100%;
     height: 100%;
-    top: 0;
-    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0px;
+    left: 0px;
     z-index: -1;
 
     & .background-img {

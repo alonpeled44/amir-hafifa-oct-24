@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import image from "../images/pokeball-closed.png";
-import style from "../styles/header.module.css";
+import css from "../styles/header.module.css";
 
 export default function Header() {
   const [showDate, setShowDate] = useState(true);
@@ -19,7 +19,7 @@ export default function Header() {
   const currentDate = new Date().toLocaleDateString("en-GB");
 
   return (
-    <header className={style.header}>
+    <header className={css.header}>
       <img src={image.src} alt="Pokeball" />
       <h1>Pokémon</h1>
       {showDate && <p>{currentDate}</p>}

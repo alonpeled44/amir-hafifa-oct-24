@@ -31,10 +31,9 @@
     background-color: transparent;
     position: absolute;
     left: 50%;
-    top: 20px;
     transform: translate(-50%);
+    top: 20px;
     z-index: 1;
-    margin-inline: auto;
     gap: 2px;
 
     & img {

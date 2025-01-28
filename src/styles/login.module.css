@@ -7,7 +7,8 @@
   height: min(375px, 100%);
   border: 2px solid black;
   text-align: center;
-  margin: 0 auto;
+  left: 50%;
+  transform: translate(-50%);
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -43,7 +44,7 @@
     display: flex;
     justify-content: space-between;
     justify-self: center;
-    width: 93.2835821%; /* exact percentege to reach 500px */
+    width: 500px;
     padding: 23px 5px 5px 5px;
     gap: 10px;
   }
@@ -77,9 +78,9 @@
     top: 110px;
 
     & input {
-      border: 0;
+      border: none;
       border-bottom: 2px solid black;
-      border-radius: 0;
+      border-radius: 0px;
       font-size: 12px;
       padding: 5px 0px;
       background-color: transparent;
