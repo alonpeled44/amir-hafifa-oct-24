@@ -30,12 +30,10 @@
   .header {
     background-color: transparent;
     position: absolute;
-    z-index: 1;
-    left: 0px;
-    right: 0px;
+    left: 50%;
+    transform: translate(-50%);
     top: 20px;
-    margin-inline: auto;
-    width: fit-content;
+    z-index: 1;
     gap: 2px;
 
     & img {
@@ -43,12 +41,8 @@
     }
 
     & h1 {
-      -webkit-text-stroke: 4px #4062ab; /* width and color */
+      -webkit-text-stroke: 4px #4062ab;
       font-size: 65px;
-    }
-
-    & p {
-      display: none;
     }
   }
 }

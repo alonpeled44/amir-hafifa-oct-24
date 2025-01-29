@@ -6,7 +6,9 @@ export default function App({ Component, pageProps }) {
     <>
       <Header />
       <main>
-        <div className="background-img" />
+        <div className="img-container">
+          <div className="background-img" />
+        </div>
         <Component {...pageProps} />
       </main>
     </>

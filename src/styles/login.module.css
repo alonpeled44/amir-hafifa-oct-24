@@ -7,7 +7,8 @@
   height: min(375px, 100%);
   border: 2px solid black;
   text-align: center;
-  margin: 0 auto;
+  left: 50%;
+  transform: translate(-50%);
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -74,19 +75,12 @@
     background-color: transparent;
     border: none;
     box-shadow: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     top: 110px;
-
-    & h1 {
-      display: none;
-    }
 
     & input {
       border: none;
       border-bottom: 2px solid black;
-      border-radius: 0;
+      border-radius: 0px;
       font-size: 12px;
       padding: 5px 0px;
       background-color: transparent;
