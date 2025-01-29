@@ -8,16 +8,6 @@ export default function Login() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const savedUsername = localStorage.getItem("username");
-      const savedPassword = localStorage.getItem("password");
-
-      if (savedUsername) setUsername(savedUsername);
-      if (savedPassword) setPassword(savedPassword);
-    }
-  }, []);
-
-  useEffect(() => {
     const handleResize = () => {
       setShowTitle(window.innerWidth > 1200);
     };
@@ -53,31 +43,28 @@ export default function Login() {
 
     if (!username || !password) {
       setError("Username or Password incorrect!");
-      return;
+    } else {
+      setError("");
+
+      localStorage.setItem("username", username);
+      localStorage.setItem("password", password);
+
+      console.log("Saved Username:", username);
+      console.log("Saved Password:", password);
+
+      setUsername("");
+      setPassword("");
     }
-
-    setError("");
-
-    localStorage.setItem("username", username);
-    localStorage.setItem("password", password);
-
-    console.log("Saved Username:", username);
-    console.log("Saved Password:", password);
-
-    setUsername("");
-    setPassword("");
   };
 
   const handleGuestLogin = () => {
-    const guestUser = "!Guest!";
-
-    localStorage.setItem("username", guestUser);
-    localStorage.setItem("password", guestUser);
+    localStorage.setItem("username", "!Guest!");
+    localStorage.setItem("password", "!Guest!");
 
     setUsername("");
     setPassword("");
 
-    console.log("Guest Login");
+    console.log("Guest Login: Saved as '!Guest!' but inputs remain empty.");
   };
 
   return (
