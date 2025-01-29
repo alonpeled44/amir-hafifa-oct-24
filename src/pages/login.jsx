@@ -1,10 +1,32 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import css from "../styles/login.module.css";
 
 export default function Login() {
+  const [showTitle, setShowTitle] = useState(true);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const savedUsername = localStorage.getItem("username");
+      const savedPassword = localStorage.getItem("password");
+
+      if (savedUsername) setUsername(savedUsername);
+      if (savedPassword) setPassword(savedPassword);
+    }
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setShowTitle(window.innerWidth > 1200);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handleUsernameChange = (e) => {
     const value = e.target.value;
@@ -16,7 +38,6 @@ export default function Login() {
   const handlePasswordChange = (e) => {
     const newValue = e.target.value;
 
-    // Compare newValue with current masked password length
     if (newValue.length > password.length) {
       const newChar = newValue[newValue.length - 1];
       if (/^[a-zA-Z0-9]$/.test(newChar)) {
@@ -29,18 +50,39 @@ export default function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (!username || !password) {
-      setError("Both fields are required!");
+      setError("Username or Password incorrect!");
       return;
     }
+
     setError("");
-    console.log("Username:", username);
-    console.log("Password:", password);
+
+    localStorage.setItem("username", username);
+    localStorage.setItem("password", password);
+
+    console.log("Saved Username:", username);
+    console.log("Saved Password:", password);
+
+    setUsername("");
+    setPassword("");
+  };
+
+  const handleGuestLogin = () => {
+    const guestUser = "!Guest!";
+
+    localStorage.setItem("username", guestUser);
+    localStorage.setItem("password", guestUser);
+
+    setUsername("");
+    setPassword("");
+
+    console.log("Guest Login");
   };
 
   return (
     <form className={css.container} onSubmit={handleSubmit}>
-      <h1>Login</h1>
+      {showTitle && <h1>Login</h1>}
       <input
         type="text"
         placeholder="Username"
@@ -56,7 +98,7 @@ export default function Login() {
       {error && <p style={{ color: "red" }}>{error}</p>}
       <div>
         <button type="submit">Login</button>
-        <button type="button" onClick={() => console.log("Guest Login")}>
+        <button type="button" onClick={handleGuestLogin}>
           Join as Guest
         </button>
       </div>
