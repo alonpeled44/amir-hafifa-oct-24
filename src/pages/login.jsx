@@ -26,15 +26,9 @@ export default function Login() {
   };
 
   const handlePasswordChange = (e) => {
-    const newValue = e.target.value;
-
-    if (newValue.length > password.length) {
-      const newChar = newValue[newValue.length - 1];
-      if (/^[a-zA-Z0-9]$/.test(newChar)) {
-        setPassword(password + newChar);
-      }
-    } else if (newValue.length < password.length) {
-      setPassword(password.slice(0, newValue.length));
+    const value = e.target.value;
+    if (/^[a-zA-Z0-9]*$/.test(value)) {
+      setPassword(value);
     }
   };
 
@@ -77,9 +71,9 @@ export default function Login() {
         onChange={handleUsernameChange}
       />
       <input
-        type="text"
+        type="password"
         placeholder="Password"
-        value={"*".repeat(password.length)}
+        value={password}
         onChange={handlePasswordChange}
       />
       {error && <p style={{ color: "red" }}>{error}</p>}
