@@ -43,9 +43,6 @@ export default function Login() {
       localStorage.setItem("username", username);
       localStorage.setItem("password", password);
 
-      console.log("Saved Username:", username);
-      console.log("Saved Password:", password);
-
       setUsername("");
       setPassword("");
     }
@@ -57,8 +54,6 @@ export default function Login() {
 
     setUsername("");
     setPassword("");
-
-    console.log("Guest Login: Saved as '!Guest!' but inputs remain empty.");
   };
 
   return (
