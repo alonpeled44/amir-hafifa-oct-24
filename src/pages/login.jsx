@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import users from "../libs/users.js";
 import css from "../styles/login.module.css";
 
 export default function Login() {
@@ -6,6 +8,7 @@ export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const router = useRouter();
 
   useEffect(() => {
     const handleResize = () => {
@@ -35,23 +38,25 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (e.nativeEvent.submitter.id === "guest") {
+    if (!username || !password) {
+      setError("Both fields are required!");
+    } else if (e.nativeEvent.submitter.id === "guest") {
       localStorage.setItem("username", "!Guest!");
       localStorage.setItem("password", "!Guest!");
-
       setUsername("");
       setPassword("");
+      router.push("/");
     } else {
-      if (!username || !password) {
-        setError("Both fields are required!");
-      } else {
-        setError("");
+      const foundUser = users.find(
+        (user) => user.username === username && user.password === password
+      );
 
+      if (foundUser) {
         localStorage.setItem("username", username);
         localStorage.setItem("password", password);
-
-        setUsername("");
-        setPassword("");
+        router.push("/");
+      } else {
+        setError("Username or password incorrect");
       }
     }
   };
