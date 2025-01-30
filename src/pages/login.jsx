@@ -38,25 +38,27 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!username || !password) {
-      setError("Both fields are required!");
-    } else if (e.nativeEvent.submitter.id === "guest") {
+    if (e.nativeEvent.submitter.id === "guest") {
       localStorage.setItem("username", "!Guest!");
       localStorage.setItem("password", "!Guest!");
       setUsername("");
       setPassword("");
       router.push("/");
     } else {
-      const foundUser = users.find(
-        (user) => user.username === username && user.password === password
-      );
-
-      if (foundUser) {
-        localStorage.setItem("username", username);
-        localStorage.setItem("password", password);
-        router.push("/");
+      if (!username || !password) {
+        setError("Both fields are required!");
       } else {
-        setError("Username or password incorrect");
+        const foundUser = users.find(
+          (user) => user.username === username && user.password === password
+        );
+
+        if (foundUser) {
+          localStorage.setItem("username", username);
+          localStorage.setItem("password", password);
+          router.push("/");
+        } else {
+          setError("Username or password incorrect");
+        }
       }
     }
   };
