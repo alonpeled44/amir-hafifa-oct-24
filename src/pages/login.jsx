@@ -35,9 +35,7 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const clickedButtonId = e.nativeEvent.submitter.id;
-
-    if (clickedButtonId === "guest") {
+    if (e.nativeEvent.submitter.id === "guest") {
       localStorage.setItem("username", "!Guest!");
       localStorage.setItem("password", "!Guest!");
 
