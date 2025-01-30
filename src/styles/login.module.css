@@ -40,12 +40,20 @@
     color: #4f4f4f;
   }
 
+  & p {
+    background: linear-gradient(to right, #eb0f07, #ec3d3a);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 20px;
+  }
+
   & > div {
     display: flex;
     justify-content: space-between;
     justify-self: center;
     width: 500px;
-    padding: 23px 5px 5px 5px;
+    padding: 17px 5px 5px 5px;
     gap: 10px;
   }
 
@@ -98,6 +106,10 @@
       -webkit-text-stroke: 2px #4062ab;
       font-size: 30px;
       text-shadow: none;
+    }
+
+    & p {
+      -webkit-text-stroke: 0.5px black;
     }
 
     & > div {
