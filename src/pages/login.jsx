@@ -35,25 +35,27 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!username || !password) {
-      setError("Username or Password incorrect!");
-    } else {
-      setError("");
+    const clickedButtonId = e.nativeEvent.submitter.id;
 
-      localStorage.setItem("username", username);
-      localStorage.setItem("password", password);
+    if (clickedButtonId === "guest") {
+      localStorage.setItem("username", "!Guest!");
+      localStorage.setItem("password", "!Guest!");
 
       setUsername("");
       setPassword("");
+    } else {
+      if (!username || !password) {
+        setError("Both fields are required!");
+      } else {
+        setError("");
+
+        localStorage.setItem("username", username);
+        localStorage.setItem("password", password);
+
+        setUsername("");
+        setPassword("");
+      }
     }
-  };
-
-  const handleGuestLogin = () => {
-    localStorage.setItem("username", "!Guest!");
-    localStorage.setItem("password", "!Guest!");
-
-    setUsername("");
-    setPassword("");
   };
 
   return (
@@ -71,10 +73,12 @@ export default function Login() {
         value={password}
         onChange={handlePasswordChange}
       />
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p>{error}</p>}
       <div>
-        <button type="submit">Login</button>
-        <button type="button" onClick={handleGuestLogin}>
+        <button type="submit" id="login">
+          Login
+        </button>
+        <button type="submit" id="guest">
           Join as Guest
         </button>
       </div>
