@@ -6,15 +6,24 @@
   padding: 10px;
   height: 80px;
 
-  & img {
-    width: 60px;
-  }
+  & div {
+    display: flex;
+    gap: 8px;
+    align-items: center;
 
-  & h1 {
-    font-size: 50px;
-    color: #ffcd0d;
-    margin-block-start: 0px;
-    margin-block-end: 0px;
+    & img {
+      width: 67px;
+    }
+
+    & h1 {
+      font-size: 60px;
+      color: #ffcd0d;
+      margin-block-start: 0px;
+      margin-block-end: 0px;
+      padding-right: 7px;
+      position: relative;
+      bottom: 1px;
+    }
   }
 
   & p {
@@ -32,17 +41,30 @@
     position: absolute;
     left: 50%;
     transform: translate(-50%);
-    top: 20px;
+    top: 10px;
     z-index: 1;
     gap: 2px;
+    flex-direction: column;
+    height: 140px;
+
+    & div {
+      gap: 6px;
+    }
 
     & img {
       width: 67px;
+      height: 67px;
     }
 
     & h1 {
       -webkit-text-stroke: 4px #4062ab;
       font-size: 65px;
+    }
+
+    & div[data-user="user-menu"] {
+      width: 100%;
+      height: 100%;
+      justify-content: center;
     }
   }
 }
