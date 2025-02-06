@@ -8,21 +8,28 @@ export default function UserMenu() {
 
   useEffect(() => {
     const savedUsername = localStorage.getItem("username");
-    console.log(savedUsername);
-    if (savedUsername) {
+    if (!savedUsername) {
+      router.push("/login");
+    } else {
       setUsername(savedUsername);
     }
-  }, [router]);
+  }, []);
 
   if (router.pathname === "/login") {
     return null;
   }
 
+  const handleLogout = () => {
+    localStorage.removeItem("username");
+    localStorage.removeItem("password");
+    router.push("/login");
+  };
+
   return (
     username && (
       <div className={css["user-menu"]} data-user="user-menu">
         <span>Welcome {username}!</span>
-        <button>Logout</button>
+        <button onClick={handleLogout}>Logout</button>
       </div>
     )
   );
