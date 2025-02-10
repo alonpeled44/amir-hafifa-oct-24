@@ -24,7 +24,6 @@ export default function UserMenu({ setIsLoggedIn }) {
             setUsername(null);
             setIsLoggedIn(false);
             router.push("/login");
-            window.dispatchEvent(new Event("storage"));
           }}
         >
           Logout
