@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import image from "../images/pokeball-closed.png";
 import UserMenu from "../components/UserMenu";
-import css from "../styles/header.module.css";
 import { useRouter } from "next/router";
+import css from "../styles/header.module.css";
 
 export default function Header() {
   const [showDate, setShowDate] = useState(true);

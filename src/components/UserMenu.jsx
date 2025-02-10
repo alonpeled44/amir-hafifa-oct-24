@@ -13,21 +13,23 @@ export default function UserMenu({ setIsLoggedIn }) {
     }
   }, [router, setIsLoggedIn]);
 
-  const handleLogout = () => {
-    localStorage.removeItem("username");
-    localStorage.removeItem("password");
-    setUsername(null);
-    setIsLoggedIn(false);
-    router.push("/login");
-    window.dispatchEvent(new Event("storage"));
-  };
-
-  return router.pathname !== "/login" ? (
-    <div className={css["user-menu"]}>
-      <p>Welcome {username === "!Guest!" ? "Guest" : username}!</p>
-      <button onClick={handleLogout}>Logout</button>
-    </div>
-  ) : (
-    false
+  return (
+    router.pathname !== "/login" && (
+      <div className={css["user-menu"]}>
+        <p>Welcome {username === "!Guest!" ? "Guest" : username}!</p>
+        <button
+          onClick={() => {
+            localStorage.removeItem("username");
+            localStorage.removeItem("password");
+            setUsername(null);
+            setIsLoggedIn(false);
+            router.push("/login");
+            window.dispatchEvent(new Event("storage"));
+          }}
+        >
+          Logout
+        </button>
+      </div>
+    )
   );
 }
