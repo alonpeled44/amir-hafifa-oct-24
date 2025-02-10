@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import image from "../images/pokeball-closed.png";
 import UserMenu from "../components/UserMenu";
+import PokedexLink from "../components/PokedexLink";
 import { useRouter } from "next/router";
 import css from "../styles/header.module.css";
 
@@ -37,6 +38,7 @@ export default function Header() {
         <h1>Pokémon</h1>
       </div>
       {isLoggedIn && <UserMenu setIsLoggedIn={setIsLoggedIn} />}
+      {isLoggedIn && <PokedexLink />}
       {showDate && <p>{currentDate}</p>}
     </header>
   );
