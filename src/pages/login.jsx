@@ -64,7 +64,7 @@ export default function Login() {
   };
 
   return (
-    <form className={css.container} onSubmit={handleSubmit}>
+    <form className={css["form-container"]} onSubmit={handleSubmit}>
       {showTitle && <h1>Login</h1>}
       <input
         type="text"
