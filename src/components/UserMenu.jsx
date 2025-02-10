@@ -2,35 +2,32 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import css from "../styles/user-menu.module.css";
 
-export default function UserMenu() {
-  const [username, setUsername] = useState(null);
+export default function UserMenu({ setIsLoggedIn }) {
+  const [username, setUsername] = useState("");
   const router = useRouter();
 
   useEffect(() => {
-    const savedUsername = localStorage.getItem("username");
-    if (!savedUsername) {
-      router.push("/login");
-    } else {
+    if (typeof window !== "undefined") {
+      const savedUsername = localStorage.getItem("username");
       setUsername(savedUsername);
     }
-  }, []);
-
-  if (router.pathname === "/login") {
-    return null;
-  }
+  }, [router, setIsLoggedIn]);
 
   const handleLogout = () => {
     localStorage.removeItem("username");
     localStorage.removeItem("password");
+    setUsername(null);
+    setIsLoggedIn(false);
     router.push("/login");
+    window.dispatchEvent(new Event("storage"));
   };
 
-  return (
-    username && (
-      <div className={css["user-menu"]} data-user="user-menu">
-        <span>Welcome {username}!</span>
-        <button onClick={handleLogout}>Logout</button>
-      </div>
-    )
+  return router.pathname !== "/login" ? (
+    <div className={css["user-menu"]}>
+      <p>Welcome {username === "!Guest!" ? "Guest" : username}!</p>
+      <button onClick={handleLogout}>Logout</button>
+    </div>
+  ) : (
+    false
   );
 }

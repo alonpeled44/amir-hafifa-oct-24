@@ -2,21 +2,31 @@ import { useState, useEffect } from "react";
 import image from "../images/pokeball-closed.png";
 import UserMenu from "../components/UserMenu";
 import css from "../styles/header.module.css";
+import { useRouter } from "next/router";
+
 export default function Header() {
   const [showDate, setShowDate] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const handleResize = () => {
       setShowDate(window.innerWidth > 1200);
     };
 
-    handleResize();
-    window.addEventListener("resize", handleResize);
+    setIsLoggedIn(!!localStorage.getItem("username"));
 
+    const updateLoginStatus = () => {
+      setIsLoggedIn(!!localStorage.getItem("username"));
+    };
+
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("storage", updateLoginStatus);
     return () => {
       window.removeEventListener("resize", handleResize);
+      window.removeEventListener("storage", updateLoginStatus);
     };
-  }, []);
+  }, [router]);
 
   const currentDate = new Date().toLocaleDateString("en-GB");
 
@@ -26,7 +36,7 @@ export default function Header() {
         <img src={image.src} alt="Pokeball" />
         <h1>Pokémon</h1>
       </div>
-      <UserMenu />
+      {isLoggedIn && <UserMenu setIsLoggedIn={setIsLoggedIn} />}
       {showDate && <p>{currentDate}</p>}
     </header>
   );

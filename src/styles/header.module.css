@@ -6,7 +6,7 @@
   padding: 10px;
   height: 80px;
 
-  & div {
+  & div:first-of-type {
     display: flex;
     gap: 8px;
     align-items: center;
@@ -26,7 +26,7 @@
     }
   }
 
-  & p {
+  & > p {
     margin-left: auto;
     margin-right: 15px;
     font-size: 50px;
@@ -49,22 +49,12 @@
 
     & div {
       gap: 6px;
-    }
-
-    & img {
-      width: 67px;
-      height: 67px;
+      height: 80px;
     }
 
     & h1 {
       -webkit-text-stroke: 4px #4062ab;
       font-size: 65px;
-    }
-
-    & div[data-user="user-menu"] {
-      width: 100%;
-      height: 100%;
-      justify-content: center;
     }
   }
 }
