@@ -1,4 +1,4 @@
-.container {
+.form-container {
   background-color: #4062ab;
   border-radius: 15px;
   padding: 20px 30px;
@@ -79,17 +79,17 @@
 }
 
 @media (max-width: 1200px) {
-  .container {
+  .form-container {
+    display: flex;
+    justify-content: center;
     background-color: transparent;
     border: none;
     box-shadow: none;
-    top: 110px;
 
     & input {
       border: none;
       border-bottom: 2px solid black;
       border-radius: 0px;
-      font-size: 12px;
       padding: 5px 0px;
       background-color: transparent;
       font-size: 30px;
