@@ -11,6 +11,9 @@ export default function App({ Component, pageProps }) {
     if (!username && router.pathname !== "/login") {
       router.push("/login");
     }
+    if (username && router.pathname === "/login") {
+      router.push("/");
+    }
   }, [router.pathname]);
 
   return (
