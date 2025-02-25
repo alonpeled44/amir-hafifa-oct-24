@@ -32,16 +32,9 @@
   .option-button {
     padding: 0px;
     border: none;
-    border-radius: 16px;
-    cursor: pointer;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    width: fit-content;
+    width: 45px;
+    height: 45px;
     background: transparent;
-
-    & img {
-      width: 45px;
-      height: 45px;
-    }
 
     &:hover,
     &.selected {
