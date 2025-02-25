@@ -16,11 +16,12 @@ export default function Header() {
       setShowDate(window.innerWidth > 1200);
     };
 
-    setIsLoggedIn(!!localStorage.getItem("username"));
-
     const updateLoginStatus = () => {
       setIsLoggedIn(!!localStorage.getItem("username"));
     };
+
+    handleResize();
+    updateLoginStatus();
 
     window.addEventListener("resize", handleResize);
     window.addEventListener("storage", updateLoginStatus);
