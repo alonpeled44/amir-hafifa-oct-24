@@ -39,8 +39,12 @@ export default function Header() {
         <img src={image.src} alt="Pokeball" />
         <h1>Pokémon</h1>
       </div>
-      {isLoggedIn && <UserMenu setIsLoggedIn={setIsLoggedIn} />}
-      {isLoggedIn && <PokedexLink />}
+      {isLoggedIn && (
+        <>
+          <UserMenu setIsLoggedIn={setIsLoggedIn} />
+          <PokedexLink />
+        </>
+      )}
       {showDate && <p>{currentDate}</p>}
       {isLoggedIn && <Settings />}
     </header>

@@ -6,16 +6,15 @@ import fontIcon from "../images/Aa.png";
 export default function FontSizeSelector({
   selectedFont,
   setSelectedFont,
-  showInDesktop,
+  isDesktopMode,
   showFontDropdown,
   setShowFontDropdown,
 }) {
-  // const [showFontDropdown, setShowFontDropdown] = useState(false);
   const fontSizes = ["small", "medium", "large"];
 
   return (
     <div className={css["font-selector"]}>
-      {showInDesktop ? (
+      {isDesktopMode ? (
         <div className={css.options}>
           {fontSizes.map((size) => (
             <OptionButton
@@ -33,23 +32,26 @@ export default function FontSizeSelector({
           <OptionButton
             image={fontIcon.src}
             isSelected={true}
-            onClick={() => setShowFontDropdown(!showFontDropdown)}
+            onClick={() => setShowFontDropdown((prev) => !prev)}
             sizeClass={css[selectedFont]}
           />
 
           {showFontDropdown && (
             <div className={css["font-dropdown"]}>
-              {fontSizes
-                .filter((size) => size !== selectedFont)
-                .map((size) => (
-                  <OptionButton
-                    key={size}
-                    image={fontIcon.src}
-                    isSelected={false}
-                    onClick={() => setSelectedFont(size)}
-                    sizeClass={css[size]}
-                  />
-                ))}
+              {fontSizes.reduce((acc, size) => {
+                if (size !== selectedFont) {
+                  acc.push(
+                    <OptionButton
+                      key={size}
+                      image={fontIcon.src}
+                      isSelected={false}
+                      onClick={() => setSelectedFont(size)}
+                      sizeClass={css[size]}
+                    />
+                  );
+                }
+                return acc;
+              }, [])}
             </div>
           )}
         </div>

@@ -17,14 +17,11 @@
   }
 
   & > p {
-    margin: 5px 0 0;
+    margin-top: 5px;
     width: 100% !important;
   }
 
-  &:hover {
-    border: 3px solid #4062ab;
-  }
-
+  &:hover,
   &.selected {
     border: 3px solid #4062ab;
   }
@@ -34,7 +31,6 @@
   .option-button {
     display: flex;
     flex-direction: column;
-    align-items: center;
     padding: 0px;
     border: none;
     border-radius: 16px;
@@ -47,11 +43,6 @@
     & img {
       width: 45px;
       height: 45px;
-    }
-
-    & p {
-      margin: 5px 0 0;
-      width: 100%;
     }
 
     &:hover,

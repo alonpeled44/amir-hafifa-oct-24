@@ -6,11 +6,11 @@ import darkModeIcon from "../images/dark-mode-icon.png";
 export default function ThemeSelector({
   selectedTheme,
   setSelectedTheme,
-  showInDesktop,
+  isDesktopMode,
 }) {
   return (
     <div className={css["theme-selector"]}>
-      {showInDesktop ? (
+      {isDesktopMode ? (
         <div className={css.options}>
           <OptionButton
             image={lightModeIcon.src}

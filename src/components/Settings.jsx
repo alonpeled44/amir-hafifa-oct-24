@@ -7,8 +7,8 @@ import settingsIcon from "../images/settings-icon.png";
 export default function Settings() {
   const [selectedTheme, setSelectedTheme] = useState("light");
   const [selectedFont, setSelectedFont] = useState("medium");
-  const [showInDesktop, setShowInDesktop] = useState(true);
-  const [openDialog, setOpenDialog] = useState(false);
+  const [isDesktopMode, setIsDesktopMode] = useState(true);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [showFontDropdown, setShowFontDropdown] = useState(false);
   const dialogRef = useRef(null);
   const containerRef = useRef(null);
@@ -16,15 +16,16 @@ export default function Settings() {
 
   useEffect(() => {
     const handleResize = () => {
-      setShowInDesktop(window.innerWidth > 1200);
+      setIsDesktopMode(window.innerWidth > 1200);
       dialogRef.current.close();
 
-      if (openDialog) {
+      if (isDialogOpen) {
         window.innerWidth > 1200
           ? dialogRef.current.showModal()
           : dialogRef.current.show();
       }
     };
+
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -33,17 +34,18 @@ export default function Settings() {
   useEffect(() => {
     dialogRef.current.close();
 
-    if (openDialog) {
-      showInDesktop ? dialogRef.current.showModal() : dialogRef.current.show();
+    if (isDialogOpen) {
+      isDesktopMode ? dialogRef.current.showModal() : dialogRef.current.show();
     }
-  }, [showInDesktop, openDialog]);
+  }, [isDesktopMode, isDialogOpen]);
 
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (containerRef.current && !containerRef.current.contains(e.target)) {
-        setOpenDialog(false);
+        setIsDialogOpen(false);
       }
     };
+
     document.addEventListener("click", handleClickOutside);
     return () => document.removeEventListener("click", handleClickOutside);
   }, []);
@@ -53,7 +55,7 @@ export default function Settings() {
       <button
         onClick={(e) => {
           e.stopPropagation();
-          setOpenDialog((prev) => !prev);
+          setIsDialogOpen((prev) => !prev);
         }}
       >
         <img src={settingsIcon.src} alt="Settings" />
@@ -64,7 +66,7 @@ export default function Settings() {
         onClick={(e) => {
           e.stopPropagation();
           if (dialogRef.current && !contentRef.current.contains(e.target)) {
-            setOpenDialog(false);
+            setIsDialogOpen(false);
           }
         }}
       >
@@ -74,32 +76,32 @@ export default function Settings() {
             showFontDropdown ? css["dropdown-open"] : ""
           }`}
         >
-          {showInDesktop && <h1>Settings</h1>}
+          {isDesktopMode && <h1>Settings</h1>}
 
           <div className={css["settings-section"]}>
-            {showInDesktop && <p>Theme</p>}
+            {isDesktopMode && <p>Theme</p>}
             <ThemeSelector
               selectedTheme={selectedTheme}
               setSelectedTheme={setSelectedTheme}
-              showInDesktop={showInDesktop}
+              isDesktopMode={isDesktopMode}
             />
           </div>
 
           <div className={css["settings-section"]}>
-            {showInDesktop && <p>Font Size</p>}
+            {isDesktopMode && <p>Font Size</p>}
             <FontSizeSelector
               selectedFont={selectedFont}
               setSelectedFont={setSelectedFont}
-              showInDesktop={showInDesktop}
+              isDesktopMode={isDesktopMode}
               showFontDropdown={showFontDropdown}
               setShowFontDropdown={setShowFontDropdown}
             />
           </div>
 
-          {showInDesktop && (
+          {isDesktopMode && (
             <button
               className={css["close-settings-button"]}
-              onClick={() => setOpenDialog(false)}
+              onClick={() => setIsDialogOpen(false)}
             >
               Close
             </button>
