@@ -8,7 +8,7 @@
 
     & img {
       width: 50px;
-      aspect-ratio: 1/1;
+      height: 50px;
     }
   }
 
@@ -112,7 +112,6 @@
     }
 
     & .settings-section {
-      display: flex;
       justify-content: center;
       width: 100%;
       height: 100%;

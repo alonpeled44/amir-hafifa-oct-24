@@ -1,7 +1,7 @@
 import { useState } from "react";
-import css from "../styles/font-size-selector.module.css";
-import OptionButton from "./OptionButton";
 import fontIcon from "../images/Aa.png";
+import OptionButton from "./OptionButton";
+import css from "../styles/font-size-selector.module.css";
 
 export default function FontSizeSelector({
   selectedFont,
@@ -20,7 +20,7 @@ export default function FontSizeSelector({
             <OptionButton
               key={size}
               image={fontIcon.src}
-              label={size.charAt(0).toUpperCase() + size.slice(1)}
+              label={size}
               isSelected={selectedFont === size}
               onClick={() => setSelectedFont(size)}
               sizeClass={css[size]}

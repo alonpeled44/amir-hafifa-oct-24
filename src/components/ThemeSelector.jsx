@@ -1,7 +1,7 @@
-import css from "../styles/theme-selector.module.css";
 import OptionButton from "./OptionButton";
 import lightModeIcon from "../images/light-mode-icon.png";
 import darkModeIcon from "../images/dark-mode-icon.png";
+import css from "../styles/theme-selector.module.css";
 
 export default function ThemeSelector({
   selectedTheme,

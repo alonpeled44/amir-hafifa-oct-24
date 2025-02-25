@@ -8,7 +8,7 @@
   padding: 5px;
   cursor: pointer;
   width: 110px;
-  aspect-ratio: 1/1;
+  height: 110px;
   background: transparent;
 
   & img {
@@ -19,6 +19,7 @@
   & > p {
     margin-top: 5px;
     width: 100% !important;
+    text-transform: capitalize;
   }
 
   &:hover,
@@ -30,14 +31,12 @@
 @media (max-width: 1200px) {
   .option-button {
     display: flex;
-    flex-direction: column;
     padding: 0px;
     border: none;
     border-radius: 16px;
     cursor: pointer;
     transition: border-color 0.2s, box-shadow 0.2s;
     width: fit-content;
-    aspect-ratio: 1/1;
     background: transparent;
 
     & img {

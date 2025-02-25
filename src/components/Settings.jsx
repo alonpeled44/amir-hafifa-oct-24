@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react";
-import css from "../styles/settings.module.css";
+import settingsIcon from "../images/settings-icon.png";
 import ThemeSelector from "./ThemeSelector";
 import FontSizeSelector from "./FontSizeSelector";
-import settingsIcon from "../images/settings-icon.png";
+import css from "../styles/settings.module.css";
 
 export default function Settings() {
   const [selectedTheme, setSelectedTheme] = useState("light");
