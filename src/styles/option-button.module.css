@@ -30,7 +30,6 @@
 
 @media (max-width: 1200px) {
   .option-button {
-    display: flex;
     padding: 0px;
     border: none;
     border-radius: 16px;

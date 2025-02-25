@@ -14,9 +14,9 @@ export default function FontSizeSelector({
 
   return (
     <div className={css["font-selector"]}>
-      {isDesktopMode ? (
-        <div className={css.options}>
-          {fontSizes.map((size) => (
+      <div className={css.options}>
+        {isDesktopMode ? (
+          fontSizes.map((size) => (
             <OptionButton
               key={size}
               image={fontIcon.src}
@@ -25,37 +25,37 @@ export default function FontSizeSelector({
               onClick={() => setSelectedFont(size)}
               sizeClass={css[size]}
             />
-          ))}
-        </div>
-      ) : (
-        <div className={css.options}>
-          <OptionButton
-            image={fontIcon.src}
-            isSelected={true}
-            onClick={() => setShowFontDropdown((prev) => !prev)}
-            sizeClass={css[selectedFont]}
-          />
+          ))
+        ) : (
+          <>
+            <OptionButton
+              image={fontIcon.src}
+              isSelected={true}
+              onClick={() => setShowFontDropdown((prev) => !prev)}
+              sizeClass={css[selectedFont]}
+            />
 
-          {showFontDropdown && (
-            <div className={css["font-dropdown"]}>
-              {fontSizes.reduce((acc, size) => {
-                if (size !== selectedFont) {
-                  acc.push(
-                    <OptionButton
-                      key={size}
-                      image={fontIcon.src}
-                      isSelected={false}
-                      onClick={() => setSelectedFont(size)}
-                      sizeClass={css[size]}
-                    />
-                  );
-                }
-                return acc;
-              }, [])}
-            </div>
-          )}
-        </div>
-      )}
+            {showFontDropdown && (
+              <div className={css["font-dropdown"]}>
+                {fontSizes.reduce((acc, size) => {
+                  if (size !== selectedFont) {
+                    acc.push(
+                      <OptionButton
+                        key={size}
+                        image={fontIcon.src}
+                        isSelected={false}
+                        onClick={() => setSelectedFont(size)}
+                        sizeClass={css[size]}
+                      />
+                    );
+                  }
+                  return acc;
+                }, [])}
+              </div>
+            )}
+          </>
+        )}
+      </div>
     </div>
   );
 }
