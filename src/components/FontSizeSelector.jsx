@@ -2,6 +2,7 @@ import { useState } from "react";
 import fontIcon from "../images/Aa.png";
 import OptionButton from "./OptionButton";
 import css from "../styles/font-size-selector.module.css";
+const fontSizes = ["small", "medium", "large"];
 
 export default function FontSizeSelector({
   selectedFont,
@@ -10,8 +11,6 @@ export default function FontSizeSelector({
   showFontDropdown,
   setShowFontDropdown,
 }) {
-  const fontSizes = ["small", "medium", "large"];
-
   return (
     <div className={css["font-selector"]}>
       <div className={css.options}>
@@ -49,6 +48,7 @@ export default function FontSizeSelector({
                       />
                     );
                   }
+
                   return acc;
                 }, [])}
               </div>
