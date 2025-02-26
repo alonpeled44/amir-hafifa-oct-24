@@ -1,0 +1,38 @@
+.font-selector {
+  display: flex;
+  align-items: center;
+
+  & .options {
+    display: flex;
+    gap: 10px;
+  }
+
+  & .font-dropdown {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    top: 67px;
+    right: -112px;
+    z-index: 2;
+    background-color: black;
+    height: 55px;
+    width: 110px;
+    border-radius: 0px 16px 16px 0px;
+  }
+}
+
+.small {
+  width: 30px !important;
+  height: 30px !important;
+}
+
+.medium {
+  width: 38px !important;
+  height: 38px !important;
+}
+
+.large {
+  width: 48px !important;
+  height: 48px !important;
+}

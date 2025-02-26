@@ -1,0 +1,121 @@
+.settings-container {
+  position: relative;
+
+  & button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+
+    & img {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  & dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: none;
+    border-radius: 30px;
+  }
+
+  & .dialog-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 650px;
+    height: 450px;
+    background: black;
+    padding: 24px;
+    border-radius: 30px;
+  }
+
+  & h1 {
+    font-size: 35px;
+    color: #f3c409;
+    -webkit-text-stroke: 2px #4062ab;
+  }
+
+  & .settings-section {
+    display: flex;
+    align-items: center;
+    width: 85%;
+    gap: 15px;
+
+    & p {
+      font-size: 24px;
+      width: 25%;
+      color: #f3c409;
+      -webkit-text-stroke: 1px #4062ab;
+    }
+
+    & .options {
+      display: flex;
+      gap: 20px;
+    }
+  }
+
+  & .close-settings-button {
+    font-size: 20px;
+    background-color: crimson;
+    color: black;
+    position: relative;
+    top: 25px;
+    padding: 10px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+
+    &:hover {
+      background-color: darkred;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .settings-container {
+    top: 4px;
+    left: 6px;
+    position: fixed;
+    z-index: 2;
+
+    & button img {
+      width: 45px;
+      height: 45px;
+    }
+
+    & dialog {
+      position: absolute;
+      width: 50px;
+      height: 100%;
+      top: 100%;
+      left: -5px;
+      transform: translate(0%, 0%);
+    }
+
+    & .dialog-content {
+      width: 53px;
+      height: 122px;
+      gap: 0px;
+      overflow: hidden;
+      padding: 0px;
+      align-items: baseline;
+      position: static;
+      border-radius: 16px;
+    }
+
+    .dialog-content.dropdown-open {
+      border-radius: 16px 16px 0px 16px;
+    }
+
+    & .settings-section {
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      gap: 0px;
+    }
+  }
+}

@@ -1,0 +1,43 @@
+.option-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  border: 3px solid transparent;
+  border-radius: 16px;
+  padding: 5px;
+  cursor: pointer;
+  width: 110px;
+  height: 110px;
+  background: transparent;
+
+  & img {
+    width: 60px;
+    height: 60px;
+  }
+
+  & > p {
+    margin-top: 5px;
+    width: 100% !important;
+    text-transform: capitalize;
+  }
+
+  &:hover,
+  &.selected {
+    border: 3px solid #4062ab;
+  }
+}
+
+@media (max-width: 1200px) {
+  .option-button {
+    padding: 0px;
+    border: none;
+    width: 45px;
+    height: 45px;
+
+    &:hover,
+    &.selected {
+      border: none;
+    }
+  }
+}

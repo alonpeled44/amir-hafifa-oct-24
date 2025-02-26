@@ -33,6 +33,7 @@
     z-index: 1;
     gap: 2px;
     top: 5px;
+    height: 36px;
 
     & img {
       width: 67px;
