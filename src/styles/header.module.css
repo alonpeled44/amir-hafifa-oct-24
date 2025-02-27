@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   gap: 15px;
-  background-color: #4062ab;
+  background-color: var(--primary-color);
   padding: 10px;
   height: 80px;
 
@@ -17,7 +17,7 @@
 
     & h1 {
       font-size: 55px;
-      color: #ffcd0d;
+      color: var(--secondary-color);
       margin-block-start: 0px;
       margin-block-end: 0px;
       position: relative;
@@ -29,11 +29,10 @@
     margin-left: auto;
     margin-right: 15px;
     font-size: 50px;
-    color: #ffcd0d;
+    color: var(--secondary-color);
   }
 }
 
-/* Media query for mobile devices */
 @media (max-width: 1200px) {
   .header {
     width: 100%;

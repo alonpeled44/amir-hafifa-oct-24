@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import css from "../styles/user-menu.module.css";
 
-export default function UserMenu({ setIsLoggedIn }) {
+export default function UserMenu({ setIsLoggedIn, setSelectedTheme }) {
   const [username, setUsername] = useState("");
   const router = useRouter();
 
