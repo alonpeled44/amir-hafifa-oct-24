@@ -1,7 +1,7 @@
 .user-menu {
   display: flex;
   align-items: center;
-  font-size: 20px;
+  font-size: 1.25rem;
   color: var(--secondary-color);
   border-left: 2px solid var(--border-color);
   border-right: 2px solid var(--border-color);
@@ -19,7 +19,7 @@
     color: white;
     border: none;
     padding: 8px 15px;
-    font-size: 20px;
+    font-size: 1.25rem;
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
@@ -28,6 +28,8 @@
 
 @media (max-width: 1200px) {
   .user-menu {
+    flex-wrap: wrap;
+    justify-content: center;
     border: none;
     left: 50%;
     z-index: 1;
@@ -42,7 +44,7 @@
     }
 
     & p {
-      font-size: 26px;
+      font-size: 1.625rem;
       -webkit-text-stroke: 1.5px #4062ab;
       bottom: 9px;
       margin-left: 0px;

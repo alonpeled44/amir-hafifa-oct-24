@@ -31,6 +31,36 @@
   --mobile-background-image: url("../images/pokemon-dark-mobile-background.jpg");
 }
 
+[data-font-size="small"] {
+  font-size: 13px;
+  --option-button-width-and-height: 100px;
+  --settings-container-width: 600px;
+  --settings-container-height: 400px;
+  --header-height: 65px;
+  --pokeball-icon-width-and-height: 60px;
+  --settings-icon--width-and-height: 45px;
+}
+
+[data-font-size="medium"] {
+  font-size: 16px;
+  --option-button-width-and-height: 110px;
+  --settings-container-width: 650px;
+  --settings-container-height: 450px;
+  --header-height: 80px;
+  --pokeball-icon-width-and-height: 67px;
+  --settings-icon--width-and-height: 50px;
+}
+
+[data-font-size="large"] {
+  font-size: 19px;
+  --option-button-width-and-height: 120px;
+  --settings-container-width: 700px;
+  --settings-container-height: 500px;
+  --header-height: 95px;
+  --pokeball-icon-width-and-height: 80px;
+  --settings-icon--width-and-height: 65px;
+}
+
 * {
   box-sizing: border-box;
   padding: 0px;
@@ -39,7 +69,7 @@
 }
 
 main {
-  height: calc(100vh - 80px);
+  height: calc(100vh - var(--header-height));
   width: 100%;
   display: flex;
   justify-content: center;

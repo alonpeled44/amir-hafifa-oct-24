@@ -7,8 +7,8 @@
     cursor: pointer;
 
     & img {
-      width: 50px;
-      height: 50px;
+      width: var(--settings-icon--width-and-height);
+      height: var(--settings-icon--width-and-height);
     }
   }
 
@@ -25,9 +25,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
-    width: 650px;
-    height: 450px;
+    justify-content: space-evenly;
+    gap: 20px;
+    width: var(--settings-container-width);
+    height: var(--settings-container-height);
     background: var(--settings-background-color);
     border: 5px solid var(--border-color);
     padding: 24px;
@@ -35,7 +36,7 @@
   }
 
   & h1 {
-    font-size: 35px;
+    font-size: 2.1875rem;
     color: var(--secondary-color);
     -webkit-text-stroke: 2px var(--primary-color);
   }
@@ -47,7 +48,7 @@
     gap: 15px;
 
     & p {
-      font-size: 24px;
+      font-size: 1.5rem;
       width: 25%;
       color: var(--secondary-color);
       -webkit-text-stroke: 1px var(--primary-color);
@@ -60,11 +61,11 @@
   }
 
   & .close-settings-button {
-    font-size: 20px;
+    font-size: 1.25rem;
     background-color: crimson;
     color: black;
     position: relative;
-    top: 25px;
+    top: 5px;
     padding: 10px 18px;
     border-radius: 5px;
     cursor: pointer;
