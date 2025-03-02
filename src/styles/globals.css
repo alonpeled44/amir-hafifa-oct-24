@@ -3,6 +3,43 @@
   src: url(../pokemon-font.otf);
 }
 
+:root {
+  --primary-color: #4062ab;
+  --secondary-color: #ffcd0d;
+  --third-color: #000000;
+  --settings-background-color: linear-gradient(
+    52deg,
+    #ff850e,
+    #a7d4f3,
+    #1d9268,
+    #ffc347
+  );
+  --settings-option-background-color: rgba(0, 0, 0, 0.5);
+  --background-image: url("../images/pokemon-backgroud.jpg");
+  --mobile-background-image: url("../images/pokemon-mobile-background.jpg");
+  --card-background: url("../images/light-theme-card-background.PNG");
+  --header-height: 5rem;
+}
+
+[data-theme="dark"] {
+  --primary-color: #29314a;
+  --secondary-color: #daa520;
+  --third-color: #e0f1f1;
+  --settings-background-color: var(--primary-color);
+  --settings-option-background-color: rgb(224, 241, 241, 0.4);
+  --background-image: url("../images/dark-theme-background.png");
+  --mobile-background-image: url("../images/pokemon-dark-mobile-background.jpg");
+  --card-background: url("../images/dark-theme-card-background.jpg");
+}
+
+[data-font-size="small"] {
+  font-size: 13px;
+}
+
+[data-font-size="large"] {
+  font-size: 19px;
+}
+
 * {
   box-sizing: border-box;
   padding: 0px;
