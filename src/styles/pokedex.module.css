@@ -1,0 +1,178 @@
+.pokedex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+  width: 100%;
+  height: 100%; /* This ensures proper scaling without overflow */
+
+  .controls {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    gap: 20px;
+    margin-bottom: 20px;
+
+    .search {
+      flex: 1;
+      padding: 10px;
+      font-size: 16px;
+      border: 2px solid var(--third-color);
+      border-radius: 8px;
+      margin-right: 20px;
+      background: var(--primary-color);
+
+      &::placeholder {
+        color: var(--secondary-color);
+      }
+
+      &:focus {
+        outline: none;
+        background-color: var(--secondary-color);
+      }
+    }
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* Ensures 6 Pokémon per row */
+    gap: 15px;
+    width: 100%;
+    max-width: 1400px;
+    justify-content: center;
+    overflow-y: auto; /* Enables vertical scrolling */
+    max-height: 95%;
+    padding-right: 10px; /* Prevents scrollbar from overlapping content */
+
+    &::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: var(--primary-color);
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--secondary-color);
+      border-radius: 10px;
+    }
+  }
+
+  .card {
+    border: 2px solid var(--third-color);
+    border-radius: 10px;
+    padding: 15px;
+    background-image: var(--card-background);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: var(--third-color);
+    text-align: center;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 245px;
+    width: 180px;
+
+    & .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      font-weight: bold;
+      position: relative;
+    }
+
+    & img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin: 5px auto;
+    }
+
+    & .info {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .pokedex {
+    flex-direction: column;
+
+    /* Controls: Search & Filter */
+    & .controls {
+      position: relative;
+      top: 120px;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-evenly;
+      z-index: 1;
+    }
+
+    /* Pokémon Grid */
+    & .grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      padding: 0px;
+      position: relative;
+      top: 120px;
+      height: 440px;
+      width: fit-content;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    /* Pokémon Card */
+    & .card {
+      width: 110px;
+      height: 140px;
+      border-radius: 8px;
+      padding: 5px;
+
+      & .header {
+        font-size: 9.5px;
+        top: 5px;
+      }
+
+      & img {
+        width: 80px;
+        height: 80px;
+      }
+    }
+
+    /* Pokémon Dialog */
+    & #pokemonDialog {
+      bottom: 0;
+      height: 0;
+      overflow: hidden;
+      transition: height 0.3s ease-in-out;
+
+      &.show {
+        height: 80%;
+      }
+
+      & .dialog-content {
+        height: 200px;
+        width: 90%;
+        font-size: 10px;
+      }
+    }
+
+    /* Close Button */
+    & .close-button {
+      width: 20px;
+
+      & p {
+        font-size: 10px;
+      }
+    }
+  }
+}
