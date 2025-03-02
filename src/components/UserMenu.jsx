@@ -32,10 +32,7 @@ export default function UserMenu({
             document.documentElement.setAttribute("data-theme", "light");
 
             localStorage.setItem("font-size", "medium");
-            document.documentElement.style.setProperty(
-              "--font-size",
-              "var(--font-size-medium)"
-            );
+            document.documentElement.setAttribute("data-font-size", "medium");
 
             router.push("/login");
           }}
