@@ -6,12 +6,10 @@ import css from "../styles/settings.module.css";
 
 export default function Settings() {
   const [selectedTheme, setSelectedTheme] = useState(
-    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+    localStorage.getItem("theme") ?? "light"
   );
   const [selectedFont, setSelectedFont] = useState(
-    localStorage.getItem("font-size")
-      ? localStorage.getItem("font-size")
-      : "medium"
+    localStorage.getItem("font-size") ?? "medium"
   );
   const [isDesktopMode, setIsDesktopMode] = useState(true);
   const [isDialogOpen, setIsDialogOpen] = useState(false);

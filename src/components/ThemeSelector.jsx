@@ -19,7 +19,7 @@ export default function ThemeSelector({
     if (savedTheme) {
       setSelectedTheme(savedTheme);
     }
-  }, [setSelectedTheme]);
+  }, []);
 
   return (
     <div className={css["theme-selector"]}>

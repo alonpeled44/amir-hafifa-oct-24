@@ -30,7 +30,7 @@
     width: 40.625rem;
     height: 28.125rem;
     background: var(--settings-background-color);
-    border: 5px solid var(--border-color);
+    border: 5px solid var(--third-color);
     padding: 24px;
     border-radius: 30px;
   }

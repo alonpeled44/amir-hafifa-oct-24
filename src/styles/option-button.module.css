@@ -24,7 +24,7 @@
 
   &:hover,
   &.selected {
-    border: 3px solid var(--border-color);
+    border: 3px solid var(--third-color);
   }
 }
 

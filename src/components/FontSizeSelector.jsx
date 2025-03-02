@@ -21,7 +21,7 @@ export default function FontSizeSelector({
     if (savedFontSize) {
       setSelectedFont(savedFontSize);
     }
-  }, [setSelectedFont]);
+  }, []);
 
   return (
     <div className={css["font-selector"]}>

@@ -5,7 +5,7 @@
   box-shadow: 5px 7px rgba(0, 0, 0, 0.2);
   width: min(600px, 100%);
   height: min(375px, 100%);
-  border: 2px solid var(--border-color);
+  border: 2px solid var(--third-color);
   text-align: center;
   left: 50%;
   transform: translate(-50%);
@@ -25,10 +25,10 @@
     width: min(500px, 90%);
     padding: 10px;
     font-size: 24px;
-    border: 2px solid var(--border-color);
+    border: 2px solid var(--third-color);
     border-radius: 8px;
     background-color: #e3e2e3;
-    color: var(--font-color);
+    color: var(--third-color);
     height: 55px;
   }
 
@@ -64,8 +64,8 @@
     font-size: 24px;
     padding: 10px;
     background-color: var(--secondary-color);
-    color: var(--font-color);
-    border: 2px solid var(--border-color);
+    color: var(--third-color);
+    border: 2px solid var(--third-color);
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease;

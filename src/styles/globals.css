@@ -6,8 +6,7 @@
 :root {
   --primary-color: #4062ab;
   --secondary-color: #ffcd0d;
-  --font-color: #000000;
-  --border-color: #000000;
+  --third-color: #000000;
   --settings-background-color: linear-gradient(
     52deg,
     #ff850e,
@@ -25,8 +24,7 @@
 [data-theme="dark"] {
   --primary-color: #29314a;
   --secondary-color: #daa520;
-  --font-color: #e0f1f1;
-  --border-color: #e0f1f1;
+  --third-color: #e0f1f1;
   --settings-background-color: var(--primary-color);
   --settings-option-background-color: rgb(224, 241, 241, 0.4);
   --background-image: url("../images/dark-theme-background.png");
@@ -83,6 +81,7 @@ main {
 @media (max-width: 1200px) {
   main {
     height: 100vh;
+
     & .img-container {
       & .background-img {
         background-image: var(--mobile-background-image);
