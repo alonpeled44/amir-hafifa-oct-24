@@ -12,8 +12,8 @@
     align-items: center;
 
     & img {
-      width: var(--pokeball-icon-width-and-height);
-      height: var(--pokeball-icon-width-and-height);
+      width: 4.188rem;
+      height: 4.188rem;
     }
 
     & h1 {

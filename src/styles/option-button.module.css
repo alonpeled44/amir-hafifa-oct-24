@@ -7,8 +7,8 @@
   border-radius: 16px;
   padding: 5px;
   cursor: pointer;
-  width: var(--option-button-width-and-height);
-  height: var(--option-button-width-and-height);
+  width: 6.875rem;
+  height: 6.875rem;
   background-color: var(--settings-option-background-color) !important;
 
   & img {

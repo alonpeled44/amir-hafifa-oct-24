@@ -7,8 +7,8 @@
     cursor: pointer;
 
     & img {
-      width: var(--settings-icon--width-and-height);
-      height: var(--settings-icon--width-and-height);
+      width: 3.125rem;
+      height: 3.125rem;
     }
   }
 
@@ -27,8 +27,8 @@
     align-items: center;
     justify-content: space-evenly;
     gap: 20px;
-    width: var(--settings-container-width);
-    height: var(--settings-container-height);
+    width: 40.625rem;
+    height: 28.125rem;
     background: var(--settings-background-color);
     border: 5px solid var(--border-color);
     padding: 24px;
