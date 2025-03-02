@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import fontIcon from "../images/Aa.png";
 import OptionButton from "./OptionButton";
 import css from "../styles/font-size-selector.module.css";
@@ -11,6 +11,18 @@ export default function FontSizeSelector({
   showFontDropdown,
   setShowFontDropdown,
 }) {
+  useEffect(() => {
+    document.documentElement.setAttribute("data-font-size", selectedFont);
+    localStorage.setItem("font-size", selectedFont);
+  }, [selectedFont]);
+
+  useEffect(() => {
+    const savedFontSize = localStorage.getItem("font-size");
+    if (savedFontSize) {
+      setSelectedFont(savedFontSize);
+    }
+  }, []);
+
   return (
     <div className={css["font-selector"]}>
       <div className={css.options}>

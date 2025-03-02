@@ -1,10 +1,10 @@
 .user-menu {
   display: flex;
   align-items: center;
-  font-size: 20px;
-  color: #ffcd0d;
-  border-left: 2px solid black;
-  border-right: 2px solid black;
+  font-size: 1.25rem;
+  color: var(--secondary-color);
+  border-left: 2px solid var(--third-color);
+  border-right: 2px solid var(--third-color);
   height: 100%;
   padding-left: 5px;
   padding-right: 20px;
@@ -19,7 +19,7 @@
     color: white;
     border: none;
     padding: 8px 15px;
-    font-size: 20px;
+    font-size: 1.25rem;
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
@@ -28,19 +28,23 @@
 
 @media (max-width: 1200px) {
   .user-menu {
+    flex-wrap: wrap;
+    justify-content: center;
     border: none;
     left: 50%;
     z-index: 1;
     gap: 2px;
     top: 5px;
     height: 36px;
+    padding-left: 20px;
+    padding-right: 15px;
 
     & img {
       width: 67px;
     }
 
     & p {
-      font-size: 26px;
+      font-size: 1.625rem;
       -webkit-text-stroke: 1.5px #4062ab;
       bottom: 9px;
       margin-left: 0px;

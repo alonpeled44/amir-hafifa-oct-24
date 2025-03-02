@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import OptionButton from "./OptionButton";
 import lightModeIcon from "../images/light-mode-icon.png";
 import darkModeIcon from "../images/dark-mode-icon.png";
@@ -8,6 +9,18 @@ export default function ThemeSelector({
   setSelectedTheme,
   isDesktopMode,
 }) {
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", selectedTheme);
+    localStorage.setItem("theme", selectedTheme);
+  }, [selectedTheme]);
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      setSelectedTheme(savedTheme);
+    }
+  }, []);
+
   return (
     <div className={css["theme-selector"]}>
       {isDesktopMode ? (

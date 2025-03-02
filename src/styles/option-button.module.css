@@ -7,9 +7,9 @@
   border-radius: 16px;
   padding: 5px;
   cursor: pointer;
-  width: 110px;
-  height: 110px;
-  background: transparent;
+  width: 6.875rem;
+  height: 6.875rem;
+  background-color: var(--settings-option-background-color) !important;
 
   & img {
     width: 60px;
@@ -24,7 +24,7 @@
 
   &:hover,
   &.selected {
-    border: 3px solid #4062ab;
+    border: 3px solid var(--third-color);
   }
 }
 
@@ -34,6 +34,7 @@
     border: none;
     width: 45px;
     height: 45px;
+    background-color: transparent !important;
 
     &:hover,
     &.selected {
