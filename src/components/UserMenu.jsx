@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import css from "../styles/user-menu.module.css";
 
-export default function UserMenu({ setIsLoggedIn, setSelectedTheme }) {
+export default function UserMenu({
+  setIsLoggedIn,
+  setSelectedTheme,
+  setSelectedFont,
+}) {
   const [username, setUsername] = useState("");
   const router = useRouter();
 
@@ -23,6 +27,16 @@ export default function UserMenu({ setIsLoggedIn, setSelectedTheme }) {
             localStorage.removeItem("password");
             setUsername(null);
             setIsLoggedIn(false);
+
+            localStorage.setItem("theme", "light");
+            document.documentElement.setAttribute("data-theme", "light");
+
+            localStorage.setItem("font-size", "medium");
+            document.documentElement.style.setProperty(
+              "--font-size",
+              "var(--font-size-medium)"
+            );
+
             router.push("/login");
           }}
         >
