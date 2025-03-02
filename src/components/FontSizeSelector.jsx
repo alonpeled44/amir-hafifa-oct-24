@@ -13,7 +13,7 @@ export default function FontSizeSelector({
 }) {
   useEffect(() => {
     document.documentElement.setAttribute("data-font-size", selectedFont);
-    localStorage.setItem("theme", selectedFont);
+    localStorage.setItem("font-size", selectedFont);
   }, [selectedFont]);
 
   useEffect(() => {

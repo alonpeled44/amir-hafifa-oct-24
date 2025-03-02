@@ -5,8 +5,14 @@ import FontSizeSelector from "./FontSizeSelector";
 import css from "../styles/settings.module.css";
 
 export default function Settings() {
-  const [selectedTheme, setSelectedTheme] = useState("light");
-  const [selectedFont, setSelectedFont] = useState("medium");
+  const [selectedTheme, setSelectedTheme] = useState(
+    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+  );
+  const [selectedFont, setSelectedFont] = useState(
+    localStorage.getItem("font-size")
+      ? localStorage.getItem("font-size")
+      : "medium"
+  );
   const [isDesktopMode, setIsDesktopMode] = useState(true);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [showFontDropdown, setShowFontDropdown] = useState(false);
