@@ -82,7 +82,7 @@
     top: 4px;
     left: 6px;
     position: fixed;
-    z-index: 2;
+    z-index: 1;
 
     & button img {
       width: 45px;
