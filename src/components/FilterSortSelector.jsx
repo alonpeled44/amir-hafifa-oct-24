@@ -26,11 +26,7 @@ export default function FilterSortSelector({
                     ? selectedFilter.includes(option.value)
                     : selectedFilter === option.value
                 }
-                onChange={() =>
-                  isCheckbox
-                    ? setSelectedFilter(option.value)
-                    : setSelectedFilter(option.value)
-                }
+                onChange={() => setSelectedFilter(option.value)}
               />
               {option.label}
             </label>
