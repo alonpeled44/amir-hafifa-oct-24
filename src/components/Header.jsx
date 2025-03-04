@@ -8,13 +8,13 @@ import { useRouter } from "next/router";
 import css from "../styles/header.module.css";
 
 export default function Header() {
-  const [showDate, setShowDate] = useState(true);
+  const [isDesktopMode, setIsDesktopMode] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
     const handleResize = () => {
-      setShowDate(window.innerWidth > 1200);
+      setIsDesktopMode(window.innerWidth > 1200);
     };
 
     const updateLoginStatus = () => {
@@ -42,13 +42,13 @@ export default function Header() {
       </div>
       {isLoggedIn && (
         <>
-          <Divider />
+          {isDesktopMode && <Divider />}
           <UserMenu setIsLoggedIn={setIsLoggedIn} />
-          <Divider />
+          {isDesktopMode && <Divider />}
           <PokedexLink />
         </>
       )}
-      {showDate && <p>{currentDate}</p>}
+      {isDesktopMode && <p>{currentDate}</p>}
       {isLoggedIn && <Settings />}
     </header>
   );
