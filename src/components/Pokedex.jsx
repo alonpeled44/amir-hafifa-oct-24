@@ -6,6 +6,7 @@ import css from "../styles/pokedex.module.css";
 
 export default function Pokedex() {
   const [pokemons, setPokemons] = useState([]);
+  const [pokemonTypes, setPokemonTypes] = useState([]);
   const [filteredPokemons, setFilteredPokemons] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTypes, setSelectedTypes] = useState([]);
@@ -14,10 +15,18 @@ export default function Pokedex() {
   const [selectedPokemon, setSelectedPokemon] = useState(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
+  const sortOptions = [
+    { label: "Card Number", value: "card-number" },
+    { label: "Alphabetical", value: "abc" },
+    { label: "Weight", value: "sort-weight" },
+    { label: "Height", value: "sort-height" },
+  ];
+
   useEffect(() => {
-    fetchPokemons().then((data) => {
-      setPokemons(data);
-      setFilteredPokemons(data);
+    fetchPokemons().then(({ pokemons, types }) => {
+      setPokemons({ pokemons, types });
+      setFilteredPokemons(pokemons);
+      setPokemonTypes(types);
     });
   }, []);
 
@@ -32,7 +41,9 @@ export default function Pokedex() {
   }, []);
 
   useEffect(() => {
-    let updatedPokemons = pokemons.filter((pokemon) => {
+    if (!pokemons || !pokemons.pokemons) return; // Ensure data is available
+
+    let updatedPokemons = pokemons.pokemons.filter((pokemon) => {
       const matchesSearch =
         pokemon.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         pokemon.number.includes(searchTerm);
@@ -91,26 +102,7 @@ export default function Pokedex() {
           label="Filter by"
           selectedFilter={selectedTypes}
           setSelectedFilter={handleTypeChange}
-          options={[
-            { label: "Bug", value: "bug" },
-            { label: "Dark", value: "dark" },
-            { label: "Dragon", value: "dragon" },
-            { label: "Electric", value: "electric" },
-            { label: "Fairy", value: "fairy" },
-            { label: "Fighting", value: "fighting" },
-            { label: "Fire", value: "fire" },
-            { label: "Flying", value: "flying" },
-            { label: "Ghost", value: "ghost" },
-            { label: "Grass", value: "grass" },
-            { label: "Ground", value: "ground" },
-            { label: "Ice", value: "ice" },
-            { label: "Normal", value: "normal" },
-            { label: "Poison", value: "poison" },
-            { label: "Psychic", value: "psychic" },
-            { label: "Rock", value: "rock" },
-            { label: "Steel", value: "steel" },
-            { label: "Water", value: "water" },
-          ]}
+          options={pokemonTypes}
           isCheckbox={true}
         />
 
@@ -118,12 +110,7 @@ export default function Pokedex() {
           label="Sort by"
           selectedFilter={sortType}
           setSelectedFilter={setSortType}
-          options={[
-            { label: "Card Number", value: "card-number" },
-            { label: "Alphabetical", value: "abc" },
-            { label: "Weight", value: "sort-weight" },
-            { label: "Height", value: "sort-height" },
-          ]}
+          options={sortOptions}
           isCheckbox={false}
         />
       </div>
