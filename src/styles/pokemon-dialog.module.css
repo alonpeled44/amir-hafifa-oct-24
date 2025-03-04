@@ -1,0 +1,167 @@
+.dialog {
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+
+  & .dialogContent {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: var(--settings-background-color);
+    padding: 20px;
+    padding-top: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    width: 31.25rem;
+    height: 21.875rem;
+    max-width: 90%;
+    font-size: 1.25rem;
+    color: var(--third-color);
+    border: 3px solid var(--third-color);
+
+    & .closeButton {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: transparent;
+      border: 2px solid black;
+      font-size: 1.125rem;
+      cursor: pointer;
+      background-color: #d44450;
+
+      &:hover {
+        background-color: #d44450;
+      }
+    }
+
+    & .header {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      gap: 40px;
+      align-items: center;
+
+      & h1 {
+        font-size: 2.25rem;
+      }
+
+      & .right-side {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+
+        & > p {
+          position: relative;
+          right: 30px;
+          font-size: 1.25rem;
+        }
+
+        & .shiny-toggle {
+          display: flex;
+          width: 25%;
+          justify-content: space-between;
+          align-items: center;
+          user-select: none;
+
+          & p {
+            font-size: 1.25rem;
+          }
+        }
+      }
+    }
+
+    & .body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 15px;
+      margin-top: 10px;
+
+      & .imageContainer {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        padding: 10px;
+
+        & img {
+          width: 9.375rem;
+          height: auto;
+        }
+      }
+
+      & .info {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        & p {
+          display: flex;
+          justify-content: center;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .dialog {
+    top: 0px;
+    z-index: 1;
+
+    & .dialogContent {
+      max-width: 100%;
+      bottom: 0;
+      position: absolute;
+      height: 18.75rem;
+      max-height: 300px;
+
+      & .closeButton {
+        width: 1.25rem;
+        height: 1.25rem;
+        font-size: 0.75rem;
+      }
+
+      & .header {
+        max-width: 100%;
+
+        & h1 {
+          font-size: 1.6rem;
+        }
+
+        & .right-side {
+          gap: 42px;
+        }
+      }
+
+      & .body {
+        flex-direction: row-reverse;
+        gap: px;
+        margin-top: 0px;
+
+        & .imageContainer {
+          flex-direction: column;
+          gap: 0px;
+          padding: 0px;
+
+          & img {
+            width: 100px;
+          }
+        }
+
+        & .info {
+          justify-content: center;
+        }
+      }
+    }
+  }
+}

@@ -3,24 +3,26 @@ import image from "../images/pokeball-closed.png";
 import UserMenu from "../components/UserMenu";
 import PokedexLink from "../components/PokedexLink";
 import Divider from "../components/Divider";
+import Settings from "../components/Settings";
 import { useRouter } from "next/router";
 import css from "../styles/header.module.css";
 
 export default function Header() {
-  const [showDate, setShowDate] = useState(true);
+  const [isDesktopMode, setIsDesktopMode] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
     const handleResize = () => {
-      setShowDate(window.innerWidth > 1200);
+      setIsDesktopMode(window.innerWidth > 1200);
     };
-
-    setIsLoggedIn(!!localStorage.getItem("username"));
 
     const updateLoginStatus = () => {
       setIsLoggedIn(!!localStorage.getItem("username"));
     };
+
+    handleResize();
+    updateLoginStatus();
 
     window.addEventListener("resize", handleResize);
     window.addEventListener("storage", updateLoginStatus);
@@ -40,13 +42,14 @@ export default function Header() {
       </div>
       {isLoggedIn && (
         <>
-          <Divider />
+          {isDesktopMode && <Divider />}
           <UserMenu setIsLoggedIn={setIsLoggedIn} />
-          <Divider />
+          {isDesktopMode && <Divider />}
           <PokedexLink />
         </>
       )}
-      {showDate && <p>{currentDate}</p>}
+      {isDesktopMode && <p>{currentDate}</p>}
+      {isLoggedIn && <Settings />}
     </header>
   );
 }

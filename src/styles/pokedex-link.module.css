@@ -1,7 +1,7 @@
 .pokedex-link {
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: bold;
-  color: #ffcd0d;
+  color: var(--secondary-color);
   text-decoration: none;
   padding: 8px 12px;
   border-radius: 5px;
