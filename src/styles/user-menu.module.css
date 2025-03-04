@@ -6,13 +6,7 @@
   border-left: 2px solid var(--third-color);
   border-right: 2px solid var(--third-color);
   height: 100%;
-  padding-left: 5px;
-  padding-right: 20px;
   gap: 20px;
-
-  & p {
-    margin-left: 17px;
-  }
 
   & button {
     background-color: black;
@@ -47,7 +41,6 @@
       font-size: 1.625rem;
       -webkit-text-stroke: 1.5px #4062ab;
       bottom: 9px;
-      margin-left: 0px;
     }
   }
 }
