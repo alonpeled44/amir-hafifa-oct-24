@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, FormEvent } from "react";
 import { useRouter } from "next/router";
-import users from "../libs/users.js";
+import users from "../libs/users";
 import css from "../styles/login.module.css";
 
 export default function Login() {
@@ -21,24 +21,10 @@ export default function Login() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const handleUsernameChange = (e) => {
-    const value = e.target.value;
-    if (/^[a-zA-Z0-9]*$/.test(value)) {
-      setUsername(value);
-    }
-  };
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
-  const handlePasswordChange = (e) => {
-    const value = e.target.value;
-    if (/^[a-zA-Z0-9]*$/.test(value)) {
-      setPassword(value);
-    }
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (e.nativeEvent.submitter.id === "guest") {
+    if (((event.nativeEvent as SubmitEvent).submitter as HTMLButtonElement | null)?.id === "guest") {
       localStorage.setItem("username", "!Guest!");
       localStorage.setItem("password", "!Guest!");
       setUsername("");
@@ -70,13 +56,23 @@ export default function Login() {
         type="text"
         placeholder="Username"
         value={username}
-        onChange={handleUsernameChange}
+        onChange={(event) => {
+          const value = event.target.value;
+          if (/^[a-zA-Z0-9]*$/.test(value)) {
+            setUsername(value);
+          }
+        }}
       />
       <input
         type="password"
         placeholder="Password"
         value={password}
-        onChange={handlePasswordChange}
+        onChange={(event) => {
+          const value = event.target.value;
+          if (/^[a-zA-Z0-9]*$/.test(value)) {
+            setPassword(value);
+          }
+        }}
       />
       {error && <p>{error}</p>}
       <div>

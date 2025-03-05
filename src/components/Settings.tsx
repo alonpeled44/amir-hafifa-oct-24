@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, RefObject } from "react";
 import settingsIcon from "../images/settings-icon.png";
 import ThemeSelector from "./ThemeSelector";
 import FontSizeSelector from "./FontSizeSelector";
@@ -14,19 +14,19 @@ export default function Settings() {
   const [isDesktopMode, setIsDesktopMode] = useState(true);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [showFontDropdown, setShowFontDropdown] = useState(false);
-  const dialogRef = useRef(null);
-  const containerRef = useRef(null);
-  const contentRef = useRef(null);
+  const dialogRef = useRef<HTMLDialogElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const contentRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const handleResize = () => {
       setIsDesktopMode(window.innerWidth > 1200);
-      dialogRef.current.close();
+      dialogRef.current?.close();
 
       if (isDialogOpen) {
         window.innerWidth > 1200
-          ? dialogRef.current.showModal()
-          : dialogRef.current.show();
+          ? dialogRef.current?.showModal()
+          : dialogRef.current?.show();
       }
     };
 
@@ -36,16 +36,16 @@ export default function Settings() {
   }, []);
 
   useEffect(() => {
-    dialogRef.current.close();
+    dialogRef.current?.close();
 
     if (isDialogOpen) {
-      isDesktopMode ? dialogRef.current.showModal() : dialogRef.current.show();
+      isDesktopMode ? dialogRef.current?.showModal() : dialogRef.current?.show();
     }
   }, [isDesktopMode, isDialogOpen]);
 
   useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (containerRef.current && !containerRef.current.contains(e.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (containerRef.current && event.target instanceof Node && !containerRef.current.contains(event.target)) {
         setIsDialogOpen(false);
       }
     };
@@ -67,9 +67,9 @@ export default function Settings() {
 
       <dialog
         ref={dialogRef}
-        onClick={(e) => {
-          e.stopPropagation();
-          if (dialogRef.current && !contentRef.current.contains(e.target)) {
+        onClick={(event) => {
+          event.stopPropagation();
+          if (dialogRef.current && event.target instanceof Node && !contentRef.current?.contains(event.target)) {
             setIsDialogOpen(false);
           }
         }}

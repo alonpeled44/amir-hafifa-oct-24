@@ -2,29 +2,31 @@ import { useState, useEffect } from "react";
 import fetchPokemons from "../libs/fetchPokemons";
 import FilterSortSelector from "./FilterSortSelector";
 import PokemonDialog from "./PokemonDialog";
+import { Pokemon } from "../libs/types";
 import css from "../styles/pokedex.module.css";
 
 export default function Pokedex() {
-  const [pokemons, setPokemons] = useState([]);
-  const [pokemonTypes, setPokemonTypes] = useState([]);
-  const [filteredPokemons, setFilteredPokemons] = useState([]);
+  const [pokemons, setPokemons] = useState<Pokemon[]>([]);
+  const [pokemonTypes, setPokemonTypes] = useState<string[]>([]);
+  const [filteredPokemons, setFilteredPokemons] = useState<Pokemon[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedTypes, setSelectedTypes] = useState([]);
+  const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
   const [sortType, setSortType] = useState("card-number");
   const [isDesktopMode, setIsDesktopMode] = useState(true);
-  const [selectedPokemon, setSelectedPokemon] = useState(null);
+  const [selectedPokemon, setSelectedPokemon] = useState<Pokemon | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  const sortOptions = [
-    { label: "Card Number", value: "card-number" },
-    { label: "Alphabetical", value: "abc" },
-    { label: "Weight", value: "sort-weight" },
-    { label: "Height", value: "sort-height" },
-  ];
+  const sortOptions = {
+    cardNumber: "Card Number",
+    abc: "Alpahbetical",
+    weight: "Weight",
+    height: "Height",
+  }
 
   useEffect(() => {
     fetchPokemons().then(({ pokemons, types }) => {
-      setPokemons({ pokemons, types });
+      // console.log(types);
+      setPokemons(pokemons);
       setFilteredPokemons(pokemons);
       setPokemonTypes(types);
     });
@@ -41,9 +43,9 @@ export default function Pokedex() {
   }, []);
 
   useEffect(() => {
-    if (!pokemons || !pokemons.pokemons) return; // Ensure data is available
+    if (!pokemons) return;
 
-    let updatedPokemons = pokemons.pokemons.filter((pokemon) => {
+    const updatedPokemons = pokemons.filter((pokemon) => {
       const matchesSearch =
         pokemon.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         pokemon.number.includes(searchTerm);
@@ -57,13 +59,13 @@ export default function Pokedex() {
 
     updatedPokemons.sort((a, b) => {
       switch (sortType) {
-        case "card-number":
-          return a.number - b.number;
-        case "abc":
+        case sortOptions.cardNumber:
+          return parseInt(a.number) - parseInt(b.number);
+        case sortOptions.abc:
           return a.name.localeCompare(b.name);
-        case "sort-weight":
+        case sortOptions.weight:
           return a.weight - b.weight;
-        case "sort-height":
+        case sortOptions.height:
           return a.height - b.height;
         default:
           return 0;
@@ -73,15 +75,15 @@ export default function Pokedex() {
     setFilteredPokemons(updatedPokemons);
   }, [searchTerm, selectedTypes, sortType, pokemons]);
 
-  const handleTypeChange = (type) => {
-    setSelectedTypes((prevTypes) =>
+  const handleTypeChange: (type: string) => void  = (type)=> {
+    setSelectedTypes((prevTypes: string[]) =>
       prevTypes.includes(type)
         ? prevTypes.filter((t) => t !== type)
         : [...prevTypes, type]
     );
   };
 
-  const openDialog = (pokemon) => {
+  const openDialog: (pokemon: Pokemon) => void = (pokemon) => {
     setSelectedPokemon(pokemon);
     setIsDialogOpen(true);
   };
@@ -110,8 +112,7 @@ export default function Pokedex() {
           label="Sort by"
           selectedFilter={sortType}
           setSelectedFilter={setSortType}
-          options={sortOptions}
-          isCheckbox={false}
+          options={Object.values(sortOptions)}
         />
       </div>
 
@@ -142,7 +143,7 @@ export default function Pokedex() {
         )}
       </section>
       <PokemonDialog
-        pokemon={selectedPokemon}
+        pokemon={selectedPokemon as Pokemon} // selectedPokemon here will never be null when a pokemon card is clicked to open it.
         isDialogOpen={isDialogOpen}
         setIsDialogOpen={setIsDialogOpen}
       />

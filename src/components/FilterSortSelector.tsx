@@ -1,5 +1,14 @@
 import { useState } from "react";
+import { StateSetter } from "../libs/types";
 import css from "../styles/filter-sort-selector.module.css";
+
+type Props = {
+  selectedFilter: string | string[],
+  setSelectedFilter: (type: string) => void | StateSetter<string>,
+  options: string[],
+  label: string,
+  isCheckbox?: boolean,
+} 
 
 export default function FilterSortSelector({
   selectedFilter,
@@ -7,7 +16,7 @@ export default function FilterSortSelector({
   options,
   label,
   isCheckbox = false,
-}) {
+}: Props) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -18,17 +27,17 @@ export default function FilterSortSelector({
       {isOpen && (
         <div className={css.dropdown}>
           {options.map((option) => (
-            <label key={option.value} className={css.option}>
+            <label key={option} className={css.option}>
               <input
                 type={isCheckbox ? "checkbox" : "radio"}
                 checked={
                   isCheckbox
-                    ? selectedFilter.includes(option.value)
-                    : selectedFilter === option.value
+                    ? selectedFilter.includes(option)
+                    : selectedFilter === option
                 }
-                onChange={() => setSelectedFilter(option.value)}
+                onChange={() => setSelectedFilter(option)}
               />
-              {option.label}
+              {option}
             </label>
           ))}
         </div>

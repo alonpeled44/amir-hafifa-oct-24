@@ -2,13 +2,21 @@ import { useEffect } from "react";
 import OptionButton from "./OptionButton";
 import lightModeIcon from "../images/light-mode-icon.png";
 import darkModeIcon from "../images/dark-mode-icon.png";
+
 import css from "../styles/theme-selector.module.css";
+import { StateSetter } from "../libs/types";
+
+type Props = {
+  selectedTheme: string,
+  setSelectedTheme: StateSetter<string>,
+  isDesktopMode: boolean,
+}
 
 export default function ThemeSelector({
   selectedTheme,
   setSelectedTheme,
   isDesktopMode,
-}) {
+}: Props) {
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", selectedTheme);
     localStorage.setItem("theme", selectedTheme);

@@ -1,4 +1,6 @@
-const users  = [
+type User = {id: string, username: string, password: string}
+
+const users: User[]  = [
     {id: "819", username: "amir", password: "amir"},
     {id: "247", username: "wizi", password: "wizi"}, 
     {id: "318", username: "maya", password: "maya"}, 
