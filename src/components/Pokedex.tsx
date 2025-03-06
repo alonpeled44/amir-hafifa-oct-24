@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import fetchPokemons from "../libs/fetchPokemons";
 import FilterSortSelector from "./FilterSortSelector";
 import PokemonDialog from "./PokemonDialog";
-import { Pokemon } from "../libs/types";
+import { Nullable, Pokemon } from "../libs/types";
 import css from "../styles/pokedex.module.css";
 
 export default function Pokedex() {
@@ -13,7 +13,7 @@ export default function Pokedex() {
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
   const [sortType, setSortType] = useState("card-number");
   const [isDesktopMode, setIsDesktopMode] = useState(true);
-  const [selectedPokemon, setSelectedPokemon] = useState<Pokemon | null>(null);
+  const [selectedPokemon, setSelectedPokemon] = useState<Nullable<Pokemon>>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const sortOptions = {
@@ -23,9 +23,9 @@ export default function Pokedex() {
     height: "Height",
   }
 
+
   useEffect(() => {
     fetchPokemons().then(({ pokemons, types }) => {
-      // console.log(types);
       setPokemons(pokemons);
       setFilteredPokemons(pokemons);
       setPokemonTypes(types);
@@ -109,7 +109,7 @@ export default function Pokedex() {
 
         <FilterSortSelector
           label="Sort by"
-          selectedFilter={sortType}
+          selectedFilter={[sortType]}
           setSelectedFilter={setSortType}
           options={Object.values(sortOptions)}
         />
@@ -142,7 +142,7 @@ export default function Pokedex() {
         )}
       </section>
       <PokemonDialog
-        pokemon={selectedPokemon as Pokemon} // selectedPokemon here will never be null when a pokemon card is clicked to open it.
+        pokemon={selectedPokemon} // selectedPokemon here will never be null when a pokemon card is clicked to open it.
         isDialogOpen={isDialogOpen}
         setIsDialogOpen={setIsDialogOpen}
       />

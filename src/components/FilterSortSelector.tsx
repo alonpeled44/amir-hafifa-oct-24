@@ -3,12 +3,12 @@ import { StateSetter } from "../libs/types";
 import css from "../styles/filter-sort-selector.module.css";
 
 type Props = {
-  selectedFilter: string | string[],
+  selectedFilter: string[],
   setSelectedFilter: (type: string) => void | StateSetter<string>,
   options: string[],
   label: string,
   isCheckbox?: boolean,
-} 
+}
 
 export default function FilterSortSelector({
   selectedFilter,
@@ -30,11 +30,7 @@ export default function FilterSortSelector({
             <label key={option} className={css.option}>
               <input
                 type={isCheckbox ? "checkbox" : "radio"}
-                checked={
-                  isCheckbox
-                    ? selectedFilter.includes(option)
-                    : selectedFilter === option
-                }
+                checked={selectedFilter.includes(option)}
                 onChange={() => setSelectedFilter(option)}
               />
               {option}

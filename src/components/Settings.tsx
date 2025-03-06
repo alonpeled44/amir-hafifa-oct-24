@@ -1,8 +1,13 @@
-import { useState, useEffect, useRef, RefObject } from "react";
+import { useState, useEffect, useRef,} from "react";
 import settingsIcon from "../images/settings-icon.png";
 import ThemeSelector from "./ThemeSelector";
 import FontSizeSelector from "./FontSizeSelector";
 import css from "../styles/settings.module.css";
+import { Nullable } from "../libs/types";
+
+export function clickOutsideDialog (){
+
+}
 
 export default function Settings() {
   const [selectedTheme, setSelectedTheme] = useState(
@@ -14,9 +19,10 @@ export default function Settings() {
   const [isDesktopMode, setIsDesktopMode] = useState(true);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [showFontDropdown, setShowFontDropdown] = useState(false);
-  const dialogRef = useRef<HTMLDialogElement | null>(null);
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const contentRef = useRef<HTMLDivElement | null>(null);
+
+  const dialogRef = useRef<Nullable<HTMLDialogElement>>(null);
+  const containerRef = useRef<Nullable<HTMLDivElement>>(null);
+  const contentRef = useRef<Nullable<HTMLDivElement>>(null);
 
   useEffect(() => {
     const handleResize = () => {

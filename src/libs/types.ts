@@ -11,3 +11,5 @@ export type Pokemon = {
     frontImageShiny: string, 
     backImageShiny: string
   }
+
+  export type Nullable<T> = T | null;

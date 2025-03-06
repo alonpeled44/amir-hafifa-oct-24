@@ -16,7 +16,7 @@ async function fetchPokemonTypes(): Promise<string[]> {
     const data = await response.json();
 
     return data.results.map((type: FetchedInfo) => 
-      type.name.charAt(0).toUpperCase() + type.name.slice(1)
+      type.name.charAt(0).toUpperCase() + type.name.slice(1) // you used this in anothr file so plz make it a function
 );
   } catch (error) {
     console.error("Error fetching Pokémon types:", error);
@@ -30,7 +30,7 @@ const fetchPokemons = async (): Promise<FetchedPokemons> =>  {
       fetch(apiURL).then((res) => res.json()),
       fetchPokemonTypes(),
     ]);
-    console.log(types);
+    console.log(types); // remove this
 
     const pokemons: Pokemon[] = await Promise.all(
       pokemonResponse.results.map(async (pokemonInfo : FetchedInfo) => {

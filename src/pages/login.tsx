@@ -2,6 +2,7 @@ import { useState, useEffect, FormEvent } from "react";
 import { useRouter } from "next/router";
 import users from "../libs/users";
 import css from "../styles/login.module.css";
+import { Nullable } from "../libs/types";
 
 export default function Login() {
   const [showTitle, setShowTitle] = useState(true);
@@ -24,7 +25,7 @@ export default function Login() {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (((event.nativeEvent as SubmitEvent).submitter as HTMLButtonElement | null)?.id === "guest") {
+    if (((event.nativeEvent as SubmitEvent).submitter as Nullable<HTMLButtonElement>)?.id === "guest") {
       localStorage.setItem("username", "!Guest!");
       localStorage.setItem("password", "!Guest!");
       setUsername("");

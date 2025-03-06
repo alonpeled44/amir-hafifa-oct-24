@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Pokemon, StateSetter } from "../libs/types";
+import { Nullable, Pokemon, StateSetter } from "../libs/types";
 import css from "../styles/pokemon-dialog.module.css";
 
 type Props = {
-  pokemon: Pokemon,
+  pokemon: Nullable<Pokemon>,
   isDialogOpen: boolean,
   setIsDialogOpen: StateSetter<boolean>,
 }
@@ -13,8 +13,8 @@ export default function PokemonDialog({
   isDialogOpen,
   setIsDialogOpen,
 }: Props) {
-  const dialogRef = useRef<HTMLDialogElement | null>(null);
-  const contentRef = useRef<HTMLDivElement | null>(null);
+  const dialogRef = useRef<Nullable<HTMLDialogElement>>(null);
+  const contentRef = useRef<Nullable<HTMLDivElement>>(null);
 
   const [isDesktopMode, setIsDesktopMode] = useState(true);
   const [isShiny, setIsShiny] = useState(false);
