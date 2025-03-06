@@ -1,13 +1,20 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Nullable, Pokemon, StateSetter } from "../libs/types";
 import css from "../styles/pokemon-dialog.module.css";
+
+type Props = {
+  pokemon: Nullable<Pokemon>,
+  isDialogOpen: boolean,
+  setIsDialogOpen: StateSetter<boolean>,
+}
 
 export default function PokemonDialog({
   pokemon,
   isDialogOpen,
   setIsDialogOpen,
-}) {
-  const dialogRef = useRef(null);
-  const contentRef = useRef(null);
+}: Props) {
+  const dialogRef = useRef<Nullable<HTMLDialogElement>>(null);
+  const contentRef = useRef<Nullable<HTMLDivElement>>(null);
 
   const [isDesktopMode, setIsDesktopMode] = useState(true);
   const [isShiny, setIsShiny] = useState(false);
@@ -24,7 +31,7 @@ export default function PokemonDialog({
 
   useEffect(() => {
     if (dialogRef.current) {
-      dialogRef.current.close();
+      dialogRef.current?.close();
 
       if (isDialogOpen) {
         isDesktopMode
@@ -40,9 +47,9 @@ export default function PokemonDialog({
     <dialog
       ref={dialogRef}
       className={css.dialog}
-      onClick={(e) => {
-        e.stopPropagation();
-        if (dialogRef.current && !contentRef.current.contains(e.target)) {
+      onClick={(event) => {
+        event.stopPropagation();
+        if (dialogRef.current && event.target instanceof Node && !contentRef.current?.contains(event.target)) {
           dialogRef.current.close();
           setIsDialogOpen(false);
           setIsShiny(false);

@@ -1,12 +1,20 @@
 import css from "../styles/option-button.module.css";
 
+type Props = {
+  image: string,
+  label?: string,
+  isSelected?: boolean,
+  onClick: () => void,
+  sizeClass?: string,
+}
+
 export default function OptionButton({
   image,
   label,
   isSelected,
   onClick,
   sizeClass,
-}) {
+}: Props) {
   return (
     <button
       onClick={onClick}

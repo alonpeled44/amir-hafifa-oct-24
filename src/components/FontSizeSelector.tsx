@@ -1,8 +1,17 @@
-import { useEffect } from "react";
+import { JSX, useEffect } from "react";
 import fontIcon from "../images/Aa.png";
 import OptionButton from "./OptionButton";
 import css from "../styles/font-size-selector.module.css";
+import { StateSetter } from "../libs/types";
 const fontSizes = ["small", "medium", "large"];
+
+type Props = {
+  selectedFont: string,
+  setSelectedFont: StateSetter<string>,
+  isDesktopMode: boolean,
+  showFontDropdown: boolean,
+  setShowFontDropdown: StateSetter<boolean>,
+}
 
 export default function FontSizeSelector({
   selectedFont,
@@ -10,7 +19,7 @@ export default function FontSizeSelector({
   isDesktopMode,
   showFontDropdown,
   setShowFontDropdown,
-}) {
+}: Props) {
   useEffect(() => {
     document.documentElement.setAttribute("data-font-size", selectedFont);
     localStorage.setItem("font-size", selectedFont);
@@ -48,7 +57,7 @@ export default function FontSizeSelector({
 
             {showFontDropdown && (
               <div className={css["font-dropdown"]}>
-                {fontSizes.reduce((acc, size) => {
+                {fontSizes.reduce((acc: JSX.Element[], size) => {
                   if (size !== selectedFont) {
                     acc.push(
                       <OptionButton

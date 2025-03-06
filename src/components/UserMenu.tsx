@@ -1,19 +1,22 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import css from "../styles/user-menu.module.css";
+import { StateSetter } from "../libs/types";
+
+type Props = {
+  setIsLoggedIn: StateSetter<boolean>,
+}
 
 export default function UserMenu({
   setIsLoggedIn,
-  setSelectedTheme,
-  setSelectedFont,
-}) {
+}: Props) {
   const [username, setUsername] = useState("");
   const router = useRouter();
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       const savedUsername = localStorage.getItem("username");
-      setUsername(savedUsername);
+      setUsername(savedUsername ? savedUsername : "");
     }
   }, [router, setIsLoggedIn]);
 
@@ -25,7 +28,7 @@ export default function UserMenu({
           onClick={() => {
             localStorage.removeItem("username");
             localStorage.removeItem("password");
-            setUsername(null);
+            setUsername("");
             setIsLoggedIn(false);
 
             localStorage.setItem("theme", "light");
