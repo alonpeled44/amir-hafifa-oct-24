@@ -1,15 +1,26 @@
 import { useState, useEffect, FormEvent } from "react";
 import { useRouter } from "next/router";
-import users from "../libs/users";
 import css from "../styles/login.module.css";
-import { Nullable } from "../libs/types";
+import { Nullable, User } from "../libs/types";
 
 export default function Login() {
+  const [users, setUsers] = useState<Nullable<User[]>>(null);
   const [showTitle, setShowTitle] = useState(true);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
+
+  const fetchUsers = async () => {
+    try {
+      const res = await fetch("/api/users");
+      const data = await res.json();
+      setUsers(data as User[]);
+
+    } catch(error: any) {
+      console.error(error.message);
+    }
+  }
 
   useEffect(() => {
     const handleResize = () => {
@@ -17,6 +28,7 @@ export default function Login() {
     };
 
     handleResize();
+    fetchUsers();
     window.addEventListener("resize", handleResize);
 
     return () => window.removeEventListener("resize", handleResize);
@@ -35,7 +47,7 @@ export default function Login() {
       if (!username || !password) {
         setError("Both fields are required!");
       } else {
-        const foundUser = users.find(
+        const foundUser = users?.find(
           (user) => user.username === username && user.password === password
         );
 

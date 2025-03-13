@@ -60,6 +60,16 @@ export default function Settings() {
     return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
+  useEffect(()=> {
+    
+  }, [selectedFont, selectedTheme]);
+
+  async function updateUserSettings(){ 
+    try {
+    const res = await fetch("api/users", {method: "PUT", headers: {"Content-Type": "application/json",},body: JSON.stringify({id: find Id and add it, theme: selectedTheme, fontSize: selectedFont})})
+  }
+  }
+
   return (
     <div ref={containerRef} className={css["settings-container"]}>
       <button
