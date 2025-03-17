@@ -1,7 +1,7 @@
 import { useState, useEffect, FormEvent } from "react";
 import { useRouter } from "next/router";
-import css from "../styles/login.module.css";
 import { Nullable, User } from "../libs/types";
+import css from "../styles/login.module.css";
 
 export default function Login() {
   const [users, setUsers] = useState<Nullable<User[]>>(null);
