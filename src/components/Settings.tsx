@@ -2,8 +2,8 @@ import { useState, useEffect, useRef,} from "react";
 import settingsIcon from "../images/settings-icon.png";
 import ThemeSelector from "./ThemeSelector";
 import FontSizeSelector from "./FontSizeSelector";
-import css from "../styles/settings.module.css";
 import { Nullable, User } from "../libs/types";
+import css from "../styles/settings.module.css";
 
 export default function Settings() {
   const [user, setUser] = useState<Nullable<User>>(null);
@@ -33,7 +33,6 @@ export default function Settings() {
     return users?.find((user) => user.username === localStorage.getItem("username"));
   };
   
-
   useEffect(() => {
     const handleResize = () => {
       setIsDesktopMode(window.innerWidth > 1200);
@@ -44,9 +43,7 @@ export default function Settings() {
           ? dialogRef.current?.showModal()
           : dialogRef.current?.show();
       }
-    };
-
-    
+    };  
 
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -105,7 +102,6 @@ export default function Settings() {
         body: JSON.stringify({ id: user.id, theme: selectedTheme, fontSize: selectedFont }),
       });
   
-      console.log("Settings updated successfully!");
     } catch (error: any) {
       console.error(error.message);
     }
