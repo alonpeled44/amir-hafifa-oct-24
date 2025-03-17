@@ -3,19 +3,12 @@ import settingsIcon from "../images/settings-icon.png";
 import ThemeSelector from "./ThemeSelector";
 import FontSizeSelector from "./FontSizeSelector";
 import css from "../styles/settings.module.css";
-import { Nullable } from "../libs/types";
-
-export function clickOutsideDialog (){
-
-}
+import { Nullable, User } from "../libs/types";
 
 export default function Settings() {
-  const [selectedTheme, setSelectedTheme] = useState(
-    localStorage.getItem("theme") ?? "light"
-  );
-  const [selectedFont, setSelectedFont] = useState(
-    localStorage.getItem("font-size") ?? "medium"
-  );
+  const [user, setUser] = useState<Nullable<User>>(null);
+  const [selectedTheme, setSelectedTheme] = useState("light");
+  const [selectedFont, setSelectedFont] = useState("medium");
   const [isDesktopMode, setIsDesktopMode] = useState(true);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [showFontDropdown, setShowFontDropdown] = useState(false);
@@ -23,6 +16,23 @@ export default function Settings() {
   const dialogRef = useRef<Nullable<HTMLDialogElement>>(null);
   const containerRef = useRef<Nullable<HTMLDivElement>>(null);
   const contentRef = useRef<Nullable<HTMLDivElement>>(null);
+
+  const fetchUsers = async () => {
+    try {
+      const res = await fetch("/api/users");
+      const data = await res.json();
+      return data as User[];
+
+    } catch(error: any) {
+      console.error(error.message);
+    }
+  }
+
+  const getCurrentUser = async (): Promise<User | undefined> => {
+    const users = await fetchUsers();
+    return users?.find((user) => user.username === localStorage.getItem("username"));
+  };
+  
 
   useEffect(() => {
     const handleResize = () => {
@@ -35,6 +45,8 @@ export default function Settings() {
           : dialogRef.current?.show();
       }
     };
+
+    
 
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -61,14 +73,44 @@ export default function Settings() {
   }, []);
 
   useEffect(()=> {
-    
+    if (selectedFont !== undefined && selectedTheme !== undefined){
+      updateUserSettings(selectedFont, selectedTheme)
+    }
   }, [selectedFont, selectedTheme]);
 
-  async function updateUserSettings(){ 
+  useEffect(() => {
+    async function fetchUserSettings() {
+      try {
+        const currentUser = await getCurrentUser();
+        if (currentUser) {
+          setUser(currentUser);
+          setSelectedTheme(currentUser.theme || "light");
+          setSelectedFont(currentUser.fontSize || "medium");
+        }
+      } catch (error) {
+        console.error("Error fetching user settings:", error);
+      }
+    }
+  
+    fetchUserSettings();
+  }, []);  
+
+  async function updateUserSettings(selectedFont: string, selectedTheme: string) {
     try {
-    const res = await fetch("api/users", {method: "PUT", headers: {"Content-Type": "application/json",},body: JSON.stringify({id: find Id and add it, theme: selectedTheme, fontSize: selectedFont})})
+      if (!user) throw new Error("No current user found.");
+      
+      const res = await fetch("/api/users", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: user.id, theme: selectedTheme, fontSize: selectedFont }),
+      });
+  
+      console.log("Settings updated successfully!");
+    } catch (error: any) {
+      console.error(error.message);
+    }
   }
-  }
+  
 
   return (
     <div ref={containerRef} className={css["settings-container"]}>
