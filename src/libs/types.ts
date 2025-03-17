@@ -13,3 +13,5 @@ export type Pokemon = {
   }
 
   export type Nullable<T> = T | null;
+
+  export type User = {id: number, username: string, password: string, theme: string, fontSize: string}
